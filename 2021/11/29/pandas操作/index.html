@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>追寻的脚步 | zhenxuyang的博客</title>
+  <title>pandas操作 | zhenxuyang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="今天心血来潮翻阅了一位本科同学的博客，他大一就立志投入程序开发，之后进入腾讯从事开发工作，多年来扎根钻研，如今已是渐入佳境。和他相比，我实在是自愧不如，匆匆七年时间仍不知事。过去的光阴已不可追，小时候下象棋开局总是令人昏厥，但通过中盘发力最后也能赢。事到如今，我需要追寻自我。">
+  <meta name="description" content="apply函数的使用一般用法对dataframe中的每一行进行操作，最后把返回值写入新的一列 123def func(row):    return row[&amp;#x27;count&amp;#x27;]+1df[&amp;#x27;count_plus&amp;#x27;] &#x3D; df.apply(func, axis&#x3D;1)  如果函数返回多个值，并且要把返回值写入新的多列,注意result_type需要使用expand">
 <meta property="og:type" content="article">
-<meta property="og:title" content="追寻的脚步">
-<meta property="og:url" content="http://example.com/2021/11/21/%E8%BF%BD%E5%AF%BB%E7%9A%84%E8%84%9A%E6%9C%AC/index.html">
+<meta property="og:title" content="pandas操作">
+<meta property="og:url" content="http://example.com/2021/11/29/pandas%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="zhenxuyang的博客">
-<meta property="og:description" content="今天心血来潮翻阅了一位本科同学的博客，他大一就立志投入程序开发，之后进入腾讯从事开发工作，多年来扎根钻研，如今已是渐入佳境。和他相比，我实在是自愧不如，匆匆七年时间仍不知事。过去的光阴已不可追，小时候下象棋开局总是令人昏厥，但通过中盘发力最后也能赢。事到如今，我需要追寻自我。">
+<meta property="og:description" content="apply函数的使用一般用法对dataframe中的每一行进行操作，最后把返回值写入新的一列 123def func(row):    return row[&amp;#x27;count&amp;#x27;]+1df[&amp;#x27;count_plus&amp;#x27;] &#x3D; df.apply(func, axis&#x3D;1)  如果函数返回多个值，并且要把返回值写入新的多列,注意result_type需要使用expand">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-11-21T13:20:30.276Z">
-<meta property="article:modified_time" content="2021-11-29T02:12:18.783Z">
+<meta property="article:published_time" content="2021-11-29T06:47:42.000Z">
+<meta property="article:modified_time" content="2021-11-29T09:21:26.464Z">
 <meta property="article:author" content="zhenxuyang">
 <meta name="twitter:card" content="summary">
   
@@ -77,12 +77,16 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-追寻的脚本" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-pandas操作" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/11/21/%E8%BF%BD%E5%AF%BB%E7%9A%84%E8%84%9A%E6%9C%AC/" class="article-date">
-  <time class="dt-published" datetime="2021-11-21T13:20:30.276Z" itemprop="datePublished">2021-11-21</time>
+    <a href="/2021/11/29/pandas%E6%93%8D%E4%BD%9C/" class="article-date">
+  <time class="dt-published" datetime="2021-11-29T06:47:42.000Z" itemprop="datePublished">2021-11-29</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -91,7 +95,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      追寻的脚步
+      pandas操作
     </h1>
   
 
@@ -99,12 +103,15 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>今天心血来潮翻阅了一位本科同学的博客，他大一就立志投入程序开发，之后进入腾讯从事开发工作，多年来扎根钻研，如今已是渐入佳境。和他相比，我实在是自愧不如，匆匆七年时间仍不知事。过去的光阴已不可追，小时候下象棋开局总是令人昏厥，但通过中盘发力最后也能赢。事到如今，我需要追寻自我。</p>
+        <h2 id="apply函数的使用"><a href="#apply函数的使用" class="headerlink" title="apply函数的使用"></a>apply函数的使用</h2><h3 id="一般用法"><a href="#一般用法" class="headerlink" title="一般用法"></a>一般用法</h3><p>对dataframe中的每一行进行操作，最后把返回值写入新的一列</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">row</span>):</span></span><br><span class="line">    <span class="keyword">return</span> row[<span class="string">&#x27;count&#x27;</span>]+<span class="number">1</span></span><br><span class="line">df[<span class="string">&#x27;count_plus&#x27;</span>] = df.apply(func, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 
+<p>如果函数返回多个值，并且要把返回值写入新的多列,注意result_type需要使用expand</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">row</span>):</span></span><br><span class="line">    <span class="keyword">return</span> row[<span class="string">&#x27;count&#x27;</span>]+<span class="number">1</span>, row[<span class="string">&#x27;count&#x27;</span>]-<span class="number">1</span></span><br><span class="line">df[[<span class="string">&#x27;count_plus&#x27;</span>, <span class="string">&#x27;count_minus&#x27;</span>]] = df.apply(func, result_type=<span class="string">&#x27;expand&#x27;</span>, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/11/21/%E8%BF%BD%E5%AF%BB%E7%9A%84%E8%84%9A%E6%9C%AC/" data-id="ckw99pr8500010wvcbmj04s62" data-title="追寻的脚步" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/11/29/pandas%E6%93%8D%E4%BD%9C/" data-id="ckwkgxh0c00005gvcffbibv28" data-title="pandas操作" class="article-share-link">Share</a>
       
       
       
@@ -114,19 +121,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2021/11/29/git%E6%93%8D%E4%BD%9C%E6%80%BB%E7%BB%93/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          git操作总结
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/11/21/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/11/29/hexo%E6%93%8D%E4%BD%9C/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">hexo操作</div>
     </a>
   
 </nav>

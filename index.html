@@ -75,6 +75,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pandas操作" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/11/29/pandas%E6%93%8D%E4%BD%9C/" class="article-date">
+  <time class="dt-published" datetime="2021-11-29T06:47:42.000Z" itemprop="datePublished">2021-11-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/11/29/pandas%E6%93%8D%E4%BD%9C/">pandas操作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="apply函数的使用"><a href="#apply函数的使用" class="headerlink" title="apply函数的使用"></a>apply函数的使用</h2><h3 id="一般用法"><a href="#一般用法" class="headerlink" title="一般用法"></a>一般用法</h3><p>对dataframe中的每一行进行操作，最后把返回值写入新的一列</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">row</span>):</span></span><br><span class="line">    <span class="keyword">return</span> row[<span class="string">&#x27;count&#x27;</span>]+<span class="number">1</span></span><br><span class="line">df[<span class="string">&#x27;count_plus&#x27;</span>] = df.apply(func, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>如果函数返回多个值，并且要把返回值写入新的多列,注意result_type需要使用expand</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">row</span>):</span></span><br><span class="line">    <span class="keyword">return</span> row[<span class="string">&#x27;count&#x27;</span>]+<span class="number">1</span>, row[<span class="string">&#x27;count&#x27;</span>]-<span class="number">1</span></span><br><span class="line">df[[<span class="string">&#x27;count_plus&#x27;</span>, <span class="string">&#x27;count_minus&#x27;</span>]] = df.apply(func, result_type=<span class="string">&#x27;expand&#x27;</span>, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/11/29/pandas%E6%93%8D%E4%BD%9C/" data-id="ckwkgxh0c00005gvcffbibv28" data-title="pandas操作" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-hexo操作" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/11/29/hexo%E6%93%8D%E4%BD%9C/" class="article-date">
@@ -306,6 +352,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/11/29/pandas%E6%93%8D%E4%BD%9C/">pandas操作</a>
+          </li>
         
           <li>
             <a href="/2021/11/29/hexo%E6%93%8D%E4%BD%9C/">hexo操作</a>
