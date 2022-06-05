@@ -1,0 +1,89 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-12-21 09:07:44
+ * @LastEditTime: 2021-02-07 10:33:02
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \firework-master\酷炫表白烟花\fire.html
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      id="jqbb"
+      src="https://libs.baidu.com/jquery/1.11.1/jquery.min.js"
+    ></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: black;
+        user-select: none;
+        margin: 0;
+      }
+
+      .city {
+        width: 100%;
+        position: fixed;
+        bottom: 0px;
+        z-index: 100;
+      }
+
+      .city img {
+        width: 100%;
+      }
+
+      audio {
+        opacity: 0;
+      }
+    </style>
+    <title>甜甜和旭阳</title>
+    <!-- 弹窗样式 -->
+    <link href="modal.css" rel="stylesheet" />
+  </head>
+
+  <body onselectstart="return false">
+    <div class="star comet"></div>
+    <script src="js/index.js"></script>
+
+    <!--烟花部分-->
+    <canvas id="cas" style="background-color: rgba(0, 5, 24, 1); z-index: 9999">
+      浏览器不支持canvas
+    </canvas>
+    <!-- <div class="city">
+      <img src="img/city.png" alt="" />
+    </div> -->
+    <img src="img/moon.png" alt="" id="moon" style="visibility: hidden" />
+    <div style="display: none">
+      <div class="shape">小傻子和小可爱</div>
+      <div class="shape"><img src="img/2_336x446.jpg"/></div>
+      <div class="shape">我们在一起，度过了半年时光</div>
+      <div class="shape">珍贵又美好</div>
+      <div class="shape">牵着手，抵着肩</div>
+      <div class="shape">度过了好多好多开心的时光</div>
+      <div class="shape">我陪着你，你陪着我</div>
+      <!-- <div class="shape">照顾彼此，呵护对方</div> -->
+      <div class="shape">永远永远地走下去</div>
+      <div class="shape"><img src="img/1_326x434.jpg"/></div>
+      <div class="shape">半周年快乐，半周年幸福</div>
+      
+    </div>
+    <!--音乐部分-->
+    <!-- <audio autoplay loop id="music">
+      <source src="mp3/xinnian.mp3" />
+    </audio> -->
+    <iframe
+      id="iframMusic"
+      allow="autoplay"
+      style="display: none"
+      src="mp3/xinnian.mp3"
+    ></iframe>
+    <script src="jquery.min.js"></script>
+    <script src="fire.js"></script>
+    <script src="talk.js"></script>
+  </body> 
+</html>
