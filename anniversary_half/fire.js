@@ -58,7 +58,7 @@ function animate() {
         },
         document.querySelectorAll(".shape")[
           // parseInt(getRandom(0, document.querySelectorAll(".shape").length))
-          i % 10
+          i % 12
         ]
       );
       i += 1
