@@ -11,13 +11,13 @@ var i = 0;
 //     initAnimate();
 // };
 
-document.getElementById("iframMusic").onload = function () {
-  var music = document.getElementById("music");
-  music.src = "./mp3/musdddic.mp3";
-  music.oncanplay = function () {
-    music.play();
-  };
-};
+// document.getElementById("iframMusic").onload = function () {
+//   var music = document.getElementById("music");
+//   music.src = "./mp3/musdddic.mp3";
+//   music.oncanplay = function () {
+//     music.play();
+//   };
+// };
 
 function initAnimate() {
   // drawBg();
