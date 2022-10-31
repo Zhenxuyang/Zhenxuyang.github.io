@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>坚持不下去的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="坚持不下去的博客">
+<meta property="og:url" content="http://example.com/page/4/index.html">
+<meta property="og:site_name" content="坚持不下去的博客">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="zxy">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="坚持不下去的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">坚持不下去的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">再坚持一天</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-leetcode/667. 优美的排列 II" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/08/leetcode/667.%20%E4%BC%98%E7%BE%8E%E7%9A%84%E6%8E%92%E5%88%97%20II/" class="article-date">
+  <time class="dt-published" datetime="2022-09-08T15:36:01.000Z" itemprop="datePublished">2022-09-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/08/leetcode/667.%20%E4%BC%98%E7%BE%8E%E7%9A%84%E6%8E%92%E5%88%97%20II/">667. 优美的排列 II</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/beautiful-arrangement-ii/">https://leetcode.cn/problems/beautiful-arrangement-ii/</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def constructArray(self, n: int, k: int) -&gt; List[int]:</span><br><span class="line">        res = [i+1 for i in range(n)]</span><br><span class="line">        if k == 1:</span><br><span class="line">            return res</span><br><span class="line">        start = n - (k+1)</span><br><span class="line">        flag = 0</span><br><span class="line">        temp = res[start]</span><br><span class="line">        sum_ = res[-1] + res[start]</span><br><span class="line">        for i in range(start, n):</span><br><span class="line">            if flag == 0:</span><br><span class="line">                res[i] = temp</span><br><span class="line">                temp += 1</span><br><span class="line">                flag = 1</span><br><span class="line">            else:</span><br><span class="line">                res[i] = sum_ - temp + 1</span><br><span class="line">                flag = 0</span><br><span class="line">        return res </span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/08/leetcode/667.%20%E4%BC%98%E7%BE%8E%E7%9A%84%E6%8E%92%E5%88%97%20II/" data-id="cl97yz4m9000n6zujghjj1dzb" data-title="667. 优美的排列 II" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" rel="tag">Leetcode每日一题</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%97%E6%8E%92%E5%88%97/" rel="tag">数字排列</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-面试/面试题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/08/%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95%E9%A2%98/" class="article-date">
+  <time class="dt-published" datetime="2022-09-08T09:09:30.000Z" itemprop="datePublished">2022-09-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/08/%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><h2 id="进程通信的方式"><a href="#进程通信的方式" class="headerlink" title="进程通信的方式"></a>进程通信的方式</h2><ol>
+<li>管道通信</li>
+</ol>
+<ul>
+<li>管道文件</li>
+<li>半双工</li>
+<li>亲缘关系之间的进程间</li>
+</ul>
+<ol start="2">
+<li>消息队列</li>
+</ol>
+<ul>
+<li>同时发同时收</li>
+</ul>
+<ol start="3">
+<li>共享内存</li>
+</ol>
+<ul>
+<li>速度最快</li>
+<li>映射一段能被多个进程访问的内存</li>
+</ul>
+<ol start="4">
+<li>信号量</li>
+</ol>
+<p>PV操作</p>
+<ol start="5">
+<li><p>套接字</p>
+</li>
+<li><p>信号</p>
+</li>
+</ol>
+<h2 id="内核态和用户态"><a href="#内核态和用户态" class="headerlink" title="内核态和用户态"></a>内核态和用户态</h2><h3 id="切换的详细过程"><a href="#切换的详细过程" class="headerlink" title="切换的详细过程"></a>切换的详细过程</h3><ol>
+<li>进程置为内核态，堆栈指针寄存器的地址指向内核栈</li>
+<li>把用户空间的栈地址保存到内核态中</li>
+<li>加载内核程序进入内核栈空间运行</li>
+<li>运行完成之后根据用户空间栈地址切回执行用户程序</li>
+<li>在整个过程中存在很多安全检查</li>
+</ol>
+<h3 id="CPU特权级别"><a href="#CPU特权级别" class="headerlink" title="CPU特权级别"></a>CPU特权级别</h3><p>Intel x86架构有0~3四个特权级</p>
+<p>0代表最高特权 3代表最低特权</p>
+<h3 id="切换的场景"><a href="#切换的场景" class="headerlink" title="切换的场景"></a>切换的场景</h3><ol>
+<li><p>系统调用</p>
+</li>
+<li><p>中断</p>
+</li>
+<li><p>异常</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/08/%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95%E9%A2%98/" data-id="cl97yz4md000x6zuja7raf6bh" data-title="面试题" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-java/Java并发" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/08/java/Java%E5%B9%B6%E5%8F%91/" class="article-date">
+  <time class="dt-published" datetime="2022-09-08T02:36:08.000Z" itemprop="datePublished">2022-09-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/08/java/Java%E5%B9%B6%E5%8F%91/">Java并发</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Java并发"><a href="#Java并发" class="headerlink" title="Java并发"></a>Java并发</h1><h2 id="volatile关键字"><a href="#volatile关键字" class="headerlink" title="volatile关键字"></a>volatile关键字</h2><ol>
+<li>保证变量的可见性，强制读内存而不是缓存</li>
+<li>禁止编译优化导致的指令重排</li>
+<li>不能保证完全原子性</li>
+</ol>
+<h3 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h3><p>Lock前缀指令</p>
+<h2 id="synchronized关键字"><a href="#synchronized关键字" class="headerlink" title="synchronized关键字"></a>synchronized关键字</h2><h3 id="实现的原理"><a href="#实现的原理" class="headerlink" title="实现的原理"></a>实现的原理</h3><ol>
+<li><p>修饰语句块<br>monitorenter、monitorexit指令</p>
+</li>
+<li><p>修饰方法<br>ACC_SYNCHRONIZED标志</p>
+</li>
+</ol>
+<h2 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h2><p>每个线程有自己的变量</p>
+<h3 id="实现原理-1"><a href="#实现原理-1" class="headerlink" title="实现原理"></a>实现原理</h3><p>ThreadLocalMap</p>
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><h3 id="Runnable和Callable的区别"><a href="#Runnable和Callable的区别" class="headerlink" title="Runnable和Callable的区别"></a>Runnable和Callable的区别</h3><p>Runnable 不返回结果和抛出异常</p>
+<p>Callable 返回结果和抛出异常</p>
+<h3 id="创建线程池的方法"><a href="#创建线程池的方法" class="headerlink" title="创建线程池的方法"></a>创建线程池的方法</h3><ol>
+<li><p>Executors创建</p>
+</li>
+<li><p>ThreadPoolExcutor</p>
+</li>
+</ol>
+<h3 id="ThreadPoolExcutor的参数"><a href="#ThreadPoolExcutor的参数" class="headerlink" title="ThreadPoolExcutor的参数"></a>ThreadPoolExcutor的参数</h3><table>
+<thead>
+<tr>
+<th align="left">params</th>
+<th align="left">desc</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">corePoolSize</td>
+<td align="left">最小的同时运行的线程数量</td>
+</tr>
+<tr>
+<td align="left">maximumPoolSize</td>
+<td align="left">队列中的存放的任务达到最大后最大的同时运行的线程数量</td>
+</tr>
+<tr>
+<td align="left">workQueue</td>
+<td align="left">任务队列</td>
+</tr>
+<tr>
+<td align="left">keepAliveTime</td>
+<td align="left">没有新任务的情况下，核心线程外的运行线程销毁前的等待时间</td>
+</tr>
+<tr>
+<td align="left">unit</td>
+<td align="left">keepAliveTime的时间单位</td>
+</tr>
+<tr>
+<td align="left">threadFactory</td>
+<td align="left">executor创建线程时会用到的工厂</td>
+</tr>
+<tr>
+<td align="left">handler</td>
+<td align="left">任务饱和情况下的策略</td>
+</tr>
+</tbody></table>
+<h3 id="其他种类的线程池"><a href="#其他种类的线程池" class="headerlink" title="其他种类的线程池"></a>其他种类的线程池</h3><ol>
+<li>FixedThreadPool</li>
+<li>SingleThreadPool</li>
+<li>CachedThreadPool</li>
+</ol>
+<h3 id="线程池大小"><a href="#线程池大小" class="headerlink" title="线程池大小"></a>线程池大小</h3><p>计算密集型： N+1<br>IO密集型： 2*N</p>
+<h2 id="Atomic原子类"><a href="#Atomic原子类" class="headerlink" title="Atomic原子类"></a>Atomic原子类</h2><p>原子类的操作具有原子性</p>
+<h3 id="原子类的类型"><a href="#原子类的类型" class="headerlink" title="原子类的类型"></a>原子类的类型</h3><ol>
+<li><p>基本类型</p>
+</li>
+<li><p>数组类型</p>
+</li>
+<li><p>引用类型</p>
+</li>
+<li><p>对象的属性修改类型</p>
+</li>
+</ol>
+<p>原子类的实现原理是CAS</p>
+<h2 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h2><p>Compare And Swap</p>
+<h3 id="VEN"><a href="#VEN" class="headerlink" title="VEN"></a>VEN</h3><p>V: 要操作的变量<br>E: 期待的变量，就是旧值<br>N: 要写入的新值</p>
+<h3 id="Java的CAS实现"><a href="#Java的CAS实现" class="headerlink" title="Java的CAS实现"></a>Java的CAS实现</h3><p>CAS是原子操作，具体的实现通过<code>Unsafe</code>中的接口调用<code>native</code>方法，具体的实现和操作系统、CPU有关</p>
+<h3 id="存在的三大问题"><a href="#存在的三大问题" class="headerlink" title="存在的三大问题"></a>存在的三大问题</h3><ol>
+<li><p>ABA问题</p>
+</li>
+<li><p>循环时间长开销大</p>
+</li>
+<li><p>AtomicInteger只能保证一个共享变量的操作</p>
+</li>
+</ol>
+<h2 id="AQS"><a href="#AQS" class="headerlink" title="AQS"></a>AQS</h2><p>设置一个CLH队列管理获取不到锁的线程</p>
+<ol>
+<li>通过CAS对同步状态进行原子操作修改值</li>
+<li>共享方式<ol>
+<li>独占：只有1个线程能执行<ol>
+<li>ReentrantLock<ol>
+<li>可以实现公平锁和非公平锁</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>共享：可以允许多个线程执行<ol>
+<li>Semaphore<ol>
+<li><code>acquire</code>和<code>release</code>进行锁的获取和释放</li>
+<li>有非公平和公平模式</li>
+</ol>
+</li>
+<li>CountDownLatch(倒计时器)<ol>
+<li>允许count个线程阻塞在一个地方，直到所有的线程都执行完毕</li>
+<li>典型用法<ol>
+<li>某一个线程在开始运行前等待n个线程执行完毕<ol>
+<li>设置计数器为n</li>
+<li>某个线程执行<code>wait</code></li>
+<li>n个线程执行<code>countDown</code>方法</li>
+</ol>
+</li>
+<li>实现多个线程开始执行任务的最大并行性<ol>
+<li>设置计数器为1</li>
+<li>多个线程执行<code>wait</code></li>
+<li>主线程执行<code>countDown</code></li>
+<li>多个线程并发</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/08/java/Java%E5%B9%B6%E5%8F%91/" data-id="cl97yz4lw00096zuj0lm84pj3" data-title="Java并发" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag">并发</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-leetcode/1592. 重新排列单词间的空格" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/07/leetcode/1592.%20%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E5%8D%95%E8%AF%8D%E9%97%B4%E7%9A%84%E7%A9%BA%E6%A0%BC/" class="article-date">
+  <time class="dt-published" datetime="2022-09-07T09:09:28.000Z" itemprop="datePublished">2022-09-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/07/leetcode/1592.%20%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E5%8D%95%E8%AF%8D%E9%97%B4%E7%9A%84%E7%A9%BA%E6%A0%BC/">1592. 重新排列单词间的空格</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/rearrange-spaces-between-words/">https://leetcode.cn/problems/rearrange-spaces-between-words/</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def reorderSpaces(self, text: str) -&gt; str:</span><br><span class="line">        spaces_num = text.count(&quot; &quot;)</span><br><span class="line">        words = text.strip().split()</span><br><span class="line">        if len(words) == 1:</span><br><span class="line">            return words[0] + &quot; &quot; * spaces_num</span><br><span class="line">        n, m = divmod(spaces_num, len(words)-1)</span><br><span class="line">        return (&quot; &quot; * n).join(words) + &quot; &quot;*m</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/07/leetcode/1592.%20%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E5%8D%95%E8%AF%8D%E9%97%B4%E7%9A%84%E7%A9%BA%E6%A0%BC/" data-id="cl97yz4m5000l6zujbx5t361v" data-title="1592. 重新排列单词间的空格" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" rel="tag">Leetcode每日一题</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-XGboost和LightGBM" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/07/XGboost%E5%92%8CLightGBM/" class="article-date">
+  <time class="dt-published" datetime="2022-09-07T08:28:10.000Z" itemprop="datePublished">2022-09-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/07/XGboost%E5%92%8CLightGBM/">XGBoost和LightGBM</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/87885678">【机器学习】决策树（下）——XGBoost、LightGBM（非常详细）</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/07/XGboost%E5%92%8CLightGBM/" data-id="cl97yz4lo00036zuj0isf0lg0" data-title="XGBoost和LightGBM" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LightGBM/" rel="tag">LightGBM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XGBoost/" rel="tag">XGBoost</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-leetcode/828-统计子串中的唯一字符" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/06/leetcode/828-%E7%BB%9F%E8%AE%A1%E5%AD%90%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%94%AF%E4%B8%80%E5%AD%97%E7%AC%A6/" class="article-date">
+  <time class="dt-published" datetime="2022-09-06T15:34:29.000Z" itemprop="datePublished">2022-09-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/06/leetcode/828-%E7%BB%9F%E8%AE%A1%E5%AD%90%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%94%AF%E4%B8%80%E5%AD%97%E7%AC%A6/">828. 统计子串中的唯一字符</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-unique-characters-of-all-substrings-of-a-given-string/">https://leetcode.cn/problems/count-unique-characters-of-all-substrings-of-a-given-string/</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def uniqueLetterString(self, s: str) -&gt; int:</span><br><span class="line">        dict_ = collections.defaultdict(list)</span><br><span class="line">        for i, v in enumerate(s):</span><br><span class="line">            dict_[v].append(i)</span><br><span class="line">        res = 0</span><br><span class="line">        for value in dict_.values():</span><br><span class="line">            value = [-1] + value + [len(s)]</span><br><span class="line">            for n in range(1, len(value)-1):</span><br><span class="line">                res += (value[n] - value[n-1]) * (value[n+1]-value[n]) </span><br><span class="line">        return res</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/06/leetcode/828-%E7%BB%9F%E8%AE%A1%E5%AD%90%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%94%AF%E4%B8%80%E5%AD%97%E7%AC%A6/" data-id="cl9w5yrnp0003biuj8lp8ho5e" data-title="828. 统计子串中的唯一字符" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" rel="tag">Leetcode每日一题</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-bigdata/组件/Spark SQL" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/05/bigdata/%E7%BB%84%E4%BB%B6/Spark%20SQL/" class="article-date">
+  <time class="dt-published" datetime="2022-09-05T03:32:25.000Z" itemprop="datePublished">2022-09-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/05/bigdata/%E7%BB%84%E4%BB%B6/Spark%20SQL/">Spark SQL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Spark-SQL"><a href="#Spark-SQL" class="headerlink" title="Spark SQL"></a>Spark SQL</h1><ol>
+<li>用SQL查询数据</li>
+<li>以DataFrame或者DataSet的形式返回数据</li>
+</ol>
+<h2 id="加载数据"><a href="#加载数据" class="headerlink" title="加载数据"></a>加载数据</h2><ol>
+<li>支持从多种文件加载数据</li>
+<li>可以从Hive表中加载，并且用SQL对表进行查询</li>
+</ol>
+<h2 id="Join的方法"><a href="#Join的方法" class="headerlink" title="Join的方法"></a>Join的方法</h2><ol>
+<li>broadcast hash Join<ol>
+<li>小表分发到每个节点，在本地join</li>
+<li>使用hash值进行join</li>
+</ol>
+</li>
+<li>shuffle hash join<ol>
+<li>两张表拆开，根据key分发到不同节点上join</li>
+<li>使用hash值进行join</li>
+</ol>
+</li>
+<li>sort merge join<ol>
+<li>两张表拆开，根据key分发到不同节点上</li>
+<li>两张表的key预先排序</li>
+<li>分别遍历两张表进行join</li>
+</ol>
+</li>
+</ol>
+<h2 id="执行过程"><a href="#执行过程" class="headerlink" title="执行过程"></a>执行过程</h2><ol>
+<li>ANTLR得到抽象语法树</li>
+<li>根据抽像语法树和元数据得到逻辑执行计划</li>
+<li>逻辑执行计划优化<ol>
+<li>基于规则的优化<ol>
+<li>谓词下推</li>
+<li>常量折叠</li>
+<li>行列裁剪</li>
+</ol>
+</li>
+<li>基于代价的优化<ol>
+<li>逻辑计划生成多个物理计划，从中选择最小的</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>得到物理执行计划</li>
+<li>执行物理执行计划<ol>
+<li>生成java字节码</li>
+<li>划分DAG</li>
+<li>生成RDD</li>
+</ol>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2008340?from=article.detail.1843197">Spark SQL的执行过程</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/05/bigdata/%E7%BB%84%E4%BB%B6/Spark%20SQL/" data-id="cl97yz4n8002m6zujaeqw774a" data-title="Spark SQL" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spark/" rel="tag">Spark</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-bigdata/组件/Spark" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/05/bigdata/%E7%BB%84%E4%BB%B6/Spark/" class="article-date">
+  <time class="dt-published" datetime="2022-09-05T03:32:25.000Z" itemprop="datePublished">2022-09-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/05/bigdata/%E7%BB%84%E4%BB%B6/Spark/">Spark</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h1><h2 id="Resilient-Distributed-Dataset-RDD"><a href="#Resilient-Distributed-Dataset-RDD" class="headerlink" title="Resilient Distributed Dataset(RDD)"></a>Resilient Distributed Dataset(RDD)</h2><ol>
+<li><p>一种逻辑上的数据结构</p>
+</li>
+<li><p>底层处理的是分布式数据</p>
+</li>
+<li></li>
+</ol>
+<h2 id="转换算子"><a href="#转换算子" class="headerlink" title="转换算子"></a>转换算子</h2><table>
+<thead>
+<tr>
+<th align="left">算子</th>
+<th align="left"></th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">map</td>
+<td align="left">对每个元素进行操作</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">filter</td>
+<td align="left">返回过滤后的元素</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">flagMap</td>
+<td align="left">对每个元素进行操作，并且能返回多个元素</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">mapPartitions(func)</td>
+<td align="left">对每个partition进行操作</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">mapPartitionsWithIndex(func)</td>
+<td align="left">对每个partition进行操作，并且需要传入partition的索引</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">sample(withReplacement, fraction, seed)</td>
+<td align="left">从数据中抽样</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">union(otherDataset)</td>
+<td align="left">和另外一个数据集合并</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">intersection(otherDataset)</td>
+<td align="left">和另外一个数据集取交基</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">distinct([numPartitions])</td>
+<td align="left">去重</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">groupByKey([numPartitions])</td>
+<td align="left">对&lt;K, V&gt;的数据集按键值进行聚类</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">reduceByKey(func, [numPartitions])</td>
+<td align="left">When called on a dataset of (K, V) pairs, returns a dataset of (K, V) pairs where the values for each key are aggregated using the given reduce function func, which must be of type (V,V) &#x3D;&gt; V. Like in groupByKey, the number of reduce tasks is configurable through an optional second argument.</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">aggregateByKey(zeroValue)(seqOp, combOp, [numPartitions])</td>
+<td align="left">When called on a dataset of (K, V) pairs, returns a dataset of (K, U) pairs where the values for each key are aggregated using the given combine functions and a neutral “zero” value. Allows an aggregated value type that is different than the input value type, while avoiding unnecessary allocations. Like in groupByKey, the number of reduce tasks is configurable through an optional second argument.</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">sortByKey([ascending], [numPartitions])</td>
+<td align="left">When called on a dataset of (K, V) pairs where K implements Ordered, returns a dataset of (K, V) pairs sorted by keys in ascending or descending order, as specified in the boolean ascending argument.</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">join(otherDataset, [numPartitions])</td>
+<td align="left">When called on datasets of type (K, V) and (K, W), returns a dataset of (K, (V, W)) pairs with all pairs of elements for each key. Outer joins are supported through leftOuterJoin, rightOuterJoin, and fullOuterJoin.</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">cogroup(otherDataset, [numPartitions])</td>
+<td align="left">When called on datasets of type (K, V) and (K, W), returns a dataset of (K, (Iterable<V>, Iterable<W>)) tuples. This operation is also called groupWith.</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">cartesian(otherDataset)</td>
+<td align="left">When called on datasets of types T and U, returns a dataset of (T, U) pairs (all pairs of elements).</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">pipe(command, [envVars])</td>
+<td align="left">Pipe each partition of the RDD through a shell command, e.g. a Perl or bash script. RDD elements are written to the process’s stdin and lines output to its stdout are returned as an RDD of strings.</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">coalesce(numPartitions)</td>
+<td align="left">Decrease the number of partitions in the RDD to numPartitions. Useful for running operations more efficiently after filtering down a large dataset.</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">repartition(numPartitions)</td>
+<td align="left">Reshuffle the data in the RDD randomly to create either more or fewer partitions and balance it across them. This always shuffles all data over the network.</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">repartitionAndSortWithinPartitions(partitioner)</td>
+<td align="left">Repartition the RDD according to the given partitioner and, within each resulting partition, sort records by their keys. This is more efficient than calling repartition and then sorting within each partition because it can push the sorting down into the shuffle machinery.</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h2 id="3种API接口"><a href="#3种API接口" class="headerlink" title="3种API接口"></a>3种API接口</h2><h3 id="RDD"><a href="#RDD" class="headerlink" title="RDD"></a>RDD</h3><h3 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h3><h3 id="DataFrame"><a href="#DataFrame" class="headerlink" title="DataFrame"></a>DataFrame</h3><h2 id="Shuffle详解"><a href="#Shuffle详解" class="headerlink" title="Shuffle详解"></a>Shuffle详解</h2><h3 id="Write和Read两个过程"><a href="#Write和Read两个过程" class="headerlink" title="Write和Read两个过程"></a>Write和Read两个过程</h3><ol>
+<li>Write<ol>
+<li>对应Map的输出</li>
+</ol>
+</li>
+<li>Read<ol>
+<li>对应Reduce的输入</li>
+</ol>
+</li>
+</ol>
+<h3 id="Hash和Sorted两种类型"><a href="#Hash和Sorted两种类型" class="headerlink" title="Hash和Sorted两种类型"></a>Hash和Sorted两种类型</h3><ol>
+<li>Hash<ol>
+<li>根据Hash值来组织文件</li>
+<li>类型<ol>
+<li>普通Hash<ol>
+<li>Excuter中的每个任务输出N个文件</li>
+<li>每个文件对应一个Hash值的结果</li>
+<li>小文件特别多</li>
+</ol>
+</li>
+<li>聚合Hash<ol>
+<li>把普通hash过程中不同任务的输出文件按照Hash值聚合起来</li>
+<li>减少输出文件的个数</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Sorted <ol>
+<li>按照排序的方法把文件合并为一个输出文件</li>
+<li>提供索引文件标注某个Hash对应的数据的位置</li>
+<li>类型<ol>
+<li>普通sort<ol>
+<li>Excutor的输出进行排序，不同excutor的输出进行归并排序</li>
+<li>同时生成一个索引文件，给出不同hash值的offset和endset</li>
+</ol>
+</li>
+<li>bypass<ol>
+<li>使用hash值来获取输出</li>
+<li>最终的结果合并为1个文件</li>
+<li>索引文件</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000022848353">一文详解Spark Shuffle</a></p>
+<h2 id="内存管理机制"><a href="#内存管理机制" class="headerlink" title="内存管理机制"></a>内存管理机制</h2><ol>
+<li>堆内内存<ol>
+<li>Storage<ol>
+<li>存储操作的数据<ol>
+<li>RDD block</li>
+<li>broadcast类型</li>
+</ol>
+</li>
+<li>占用系统内存的60%</li>
+<li>分为3部分<ol>
+<li>可用的存储内存</li>
+<li>Unroll内存</li>
+<li>预留内存</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Excution<ol>
+<li>操作执行用的内存<ol>
+<li>shuffle操作用的内存</li>
+</ol>
+</li>
+<li>占用20%</li>
+</ol>
+</li>
+<li>Other<ol>
+<li>保存RDD元数据和用户定义的系统结构</li>
+<li>占用20%</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>堆外内存<ol>
+<li>执行内存和存储内存</li>
+<li>不需要预留空间避免OOM</li>
+<li>使用Unsafe方法管理</li>
+</ol>
+</li>
+<li>管理策略<ol>
+<li>静态管理策略</li>
+<li>动态管理策略<ol>
+<li>没有特意划出unroll空间</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="调优"><a href="#调优" class="headerlink" title="调优"></a>调优</h2><p>Spark的调优主要包括两部分</p>
+<ol>
+<li>数据序列化</li>
+<li>内存调优</li>
+</ol>
+<h3 id="数据序列化"><a href="#数据序列化" class="headerlink" title="数据序列化"></a>数据序列化</h3><p>好的序列化方法能够减少数据的传输</p>
+<ol>
+<li>Java原生序列化</li>
+<li>Kryo序列化</li>
+</ol>
+<h3 id="内存调优"><a href="#内存调优" class="headerlink" title="内存调优"></a>内存调优</h3><ol>
+<li>数据结构调优<ol>
+<li>选择合适的数据结构</li>
+</ol>
+</li>
+<li>序列化RDD</li>
+<li>垃圾回收调优<ol>
+<li>避免Full GC</li>
+<li>如果老年代内存占用过大，调整<code>spark.memory.fraction</code>来减少spark的缓存使用</li>
+<li>尝试使用G1垃圾收集器</li>
+<li>根据文件块大小来设置JVM</li>
+</ol>
+</li>
+</ol>
+<h3 id="其他的调优方法"><a href="#其他的调优方法" class="headerlink" title="其他的调优方法"></a>其他的调优方法</h3><ol>
+<li>设置合理的并行度</li>
+<li>增加目录列表的平行度<ol>
+<li>读取文件时平行读取</li>
+</ol>
+</li>
+<li>Reduce出现OOM<ol>
+<li>增加任务平行度，划分较小的任务</li>
+</ol>
+</li>
+<li>使用广播变量<ol>
+<li>复制到每个excuter中</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/05/bigdata/%E7%BB%84%E4%BB%B6/Spark/" data-id="cl97yz4ne002r6zujc0ot8ocd" data-title="Spark" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spark/" rel="tag">Spark</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-经常使用的命令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/05/%E7%BB%8F%E5%B8%B8%E4%BD%BF%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time class="dt-published" datetime="2022-09-05T03:08:04.000Z" itemprop="datePublished">2022-09-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/05/%E7%BB%8F%E5%B8%B8%E4%BD%BF%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/">经常使用的命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="经常使用但是会忘掉的命令"><a href="#经常使用但是会忘掉的命令" class="headerlink" title="经常使用但是会忘掉的命令"></a>经常使用但是会忘掉的命令</h1><h2 id="切换python版本"><a href="#切换python版本" class="headerlink" title="切换python版本"></a>切换python版本</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">which python2</span><br><span class="line">which python3</span><br><span class="line"></span><br><span class="line">whereis python</span><br><span class="line"></span><br><span class="line">sudo rm /usr/bin/python</span><br><span class="line"></span><br><span class="line">//创建新的软连接</span><br><span class="line">sudo ln -s /usr/bin/python3 /usr/bin/python</span><br><span class="line"></span><br><span class="line">python -V</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/05/%E7%BB%8F%E5%B8%B8%E4%BD%BF%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/" data-id="cl97yz4lr00056zuj67l5bh6v" data-title="经常使用的命令" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" rel="tag">备忘录</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-bigdata/组件/HDFS" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/03/bigdata/%E7%BB%84%E4%BB%B6/HDFS/" class="article-date">
+  <time class="dt-published" datetime="2022-09-03T07:42:52.000Z" itemprop="datePublished">2022-09-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Hadoop/">Hadoop</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/03/bigdata/%E7%BB%84%E4%BB%B6/HDFS/">HDFS</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h1><h2 id="HDFS的组成"><a href="#HDFS的组成" class="headerlink" title="HDFS的组成"></a>HDFS的组成</h2><ol>
+<li><a href="#namenode">NameNode</a></li>
+<li><a href="#datanode">DataNode</a></li>
+<li><a href="#secondarynamenode">SecondaryNameNode</a></li>
+<li></li>
+</ol>
+<h2 id="关键问题"><a href="#关键问题" class="headerlink" title="关键问题"></a>关键问题</h2><h3 id="数据复制"><a href="#数据复制" class="headerlink" title="数据复制"></a>数据复制</h3><ol>
+<li>数据的复制分数</li>
+<li>复制数据的存放位置</li>
+<li>数据的复制方式</li>
+</ol>
+<h3 id="元数据的持久化"><a href="#元数据的持久化" class="headerlink" title="元数据的持久化"></a>元数据的持久化</h3><ol>
+<li>NameNode的数据文件元数据和DataNone的数据文件的一致性</li>
+<li>FsImage和EditLog</li>
+</ol>
+<h3 id="通信协议"><a href="#通信协议" class="headerlink" title="通信协议"></a>通信协议</h3><h3 id="健壮性"><a href="#健壮性" class="headerlink" title="健壮性"></a>健壮性</h3><ol>
+<li>DataNode失效</li>
+<li>数据平衡</li>
+<li>数据损坏和数据校验</li>
+<li>元数据备份</li>
+<li>数据快照</li>
+</ol>
+<h3 id="数据组织"><a href="#数据组织" class="headerlink" title="数据组织"></a>数据组织</h3><ol>
+<li>分块存储</li>
+<li>写入数据时的流程</li>
+</ol>
+<h3 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h3><ol>
+<li>FS Shell</li>
+<li>DFS</li>
+<li>浏览器接口</li>
+</ol>
+<h3 id="NN的高可用配置"><a href="#NN的高可用配置" class="headerlink" title="NN的高可用配置"></a>NN的高可用配置</h3><h3 id="多个HDFS组合的配置方案"><a href="#多个HDFS组合的配置方案" class="headerlink" title="多个HDFS组合的配置方案"></a>多个HDFS组合的配置方案</h3><ol>
+<li>多个NameNode组成集群</li>
+<li>多个NameNode组成集群并且共享存储</li>
+</ol>
+<h3 id="权限配置"><a href="#权限配置" class="headerlink" title="权限配置"></a>权限配置</h3><h3 id="配额配置"><a href="#配额配置" class="headerlink" title="配额配置"></a>配额配置</h3><h3 id="API访问"><a href="#API访问" class="headerlink" title="API访问"></a>API访问</h3><h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><h3 id="NFS网关"><a href="#NFS网关" class="headerlink" title="NFS网关"></a>NFS网关</h3><p>挂载到文件目录上</p>
+<h3 id="滚动升级"><a href="#滚动升级" class="headerlink" title="滚动升级"></a>滚动升级</h3><p>不停业务的情况下升级HDFS</p>
+<h3 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h3><p>端到端的加密</p>
+<h2 id="NameNode"><a href="#NameNode" class="headerlink" title="NameNode"></a>NameNode</h2><h3 id="文件的管理"><a href="#文件的管理" class="headerlink" title="文件的管理"></a>文件的管理</h3><ul>
+<li>文件Block和DataNode的映射，并不会持久化，而是在系统启动时由DataNode进行汇报，对于不满足备份数的文件Block，NameNode再进行备份，例如某个DataNode宕机导致文件备份数量不足时</li>
+</ul>
+<h3 id="工作方式"><a href="#工作方式" class="headerlink" title="工作方式"></a>工作方式</h3><ul>
+<li>所有的操作在内存中完成</li>
+<li>数据的持久化和掉电问题</li>
+</ul>
+<h2 id="写数据流程"><a href="#写数据流程" class="headerlink" title="写数据流程"></a>写数据流程</h2><h3 id="写入过程"><a href="#写入过程" class="headerlink" title="写入过程"></a>写入过程</h3><h3 id="节点拓扑距离"><a href="#节点拓扑距离" class="headerlink" title="节点拓扑距离"></a>节点拓扑距离</h3><p>两个节点到达共同祖先的距离之和</p>
+<h3 id="机架感知策略"><a href="#机架感知策略" class="headerlink" title="机架感知策略"></a>机架感知策略</h3><p>当数据备份数据量为3时，使用两个机架，三个节点，其中的一个机架上的两个节点存放数据。</p>
+<p>机架的风险比节点要小很多，通过这样的机架感知策略，可以获得高可靠性和备份速度的平衡。 </p>
+<h3 id="Fsimage和Edits"><a href="#Fsimage和Edits" class="headerlink" title="Fsimage和Edits"></a>Fsimage和Edits</h3><p>Fsimage: NameNode的镜像文件</p>
+<p>Edits: 操作的日志</p>
+<p>可以使用命令查看Fsimage和edits的内容，分别包括文件元数据的组织详情和每个操作的详情</p>
+<h3 id="检查点时间设置"><a href="#检查点时间设置" class="headerlink" title="检查点时间设置"></a>检查点时间设置</h3><ul>
+<li>SecondaryNameNode每隔一小时执行一次</li>
+<li>每60s检查edits，如果达到100万次操作，则执行一次</li>
+</ul>
+<h2 id="DataNode"><a href="#DataNode" class="headerlink" title="DataNode"></a>DataNode</h2><h3 id="存放的内容"><a href="#存放的内容" class="headerlink" title="存放的内容"></a>存放的内容</h3><p>存放文件数据和校验信息</p>
+<h3 id="存储方式"><a href="#存储方式" class="headerlink" title="存储方式"></a>存储方式</h3><ul>
+<li><p>数据存放在硬盘上</p>
+</li>
+<li><p>一个文件会有一条元数据，所以小文件对效率有一定影响</p>
+</li>
+</ul>
+<h3 id="工作内容"><a href="#工作内容" class="headerlink" title="工作内容"></a>工作内容</h3><ul>
+<li><p>校验</p>
+<ul>
+<li>校验数据是否损坏</li>
+</ul>
+</li>
+<li><p>汇报</p>
+<ul>
+<li>向NameNode汇报数据信息</li>
+</ul>
+</li>
+<li><p>心跳</p>
+<ul>
+<li>运行中向NN保持心跳机制</li>
+</ul>
+</li>
+<li><p>读写数据</p>
+<ul>
+<li>客户端直接和DataNode建立关联，直接读写数据</li>
+<li>在读写前客户端会向NameNode查询Block和DataNode的映射关系</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据的校验"><a href="#数据的校验" class="headerlink" title="数据的校验"></a>数据的校验</h3><p>CRC校验</p>
+<h2 id="SecondaryNameNode"><a href="#SecondaryNameNode" class="headerlink" title="SecondaryNameNode"></a>SecondaryNameNode</h2><h3 id="内存持久化方案"><a href="#内存持久化方案" class="headerlink" title="内存持久化方案"></a>内存持久化方案</h3><ul>
+<li><p>日志机制</p>
+<ul>
+<li>日志越来越多，启动时根据日志恢复越来越慢</li>
+</ul>
+</li>
+<li><p>快照</p>
+<ul>
+<li>关机时间长</li>
+<li>出现故障时不能正常打快照</li>
+</ul>
+</li>
+</ul>
+<h3 id="SNN的内存持久化方案"><a href="#SNN的内存持久化方案" class="headerlink" title="SNN的内存持久化方案"></a>SNN的内存持久化方案</h3><p>合并NN的Fsimage和EditLog，可以配置下面的两个参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dfs.namenode.checkpoint.period, set to 1 hour by default, specifies the maximum delay between two consecutive checkpoints, and</span><br><span class="line"></span><br><span class="line">dfs.namenode.checkpoint.txns, set to 1 million by default, defines the number of uncheckpointed transactions on the NameNode which will force an urgent checkpoint, even if the checkpoint period has not been reached.</span><br></pre></td></tr></table></figure>
+
+<h2 id="存储类型和存储策略"><a href="#存储类型和存储策略" class="headerlink" title="存储类型和存储策略"></a>存储类型和存储策略</h2><p>HDFS支持的存储类型</p>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Archive</td>
+<td align="left">高压缩比的归档数据</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Disk</td>
+<td align="left">硬盘</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">SSD</td>
+<td align="left">固态硬盘</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Ram_Disk</td>
+<td align="left">内存</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>HDFS支持对不同的Block执行不同的存储策略</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">We have the following storage policies:</span><br><span class="line"></span><br><span class="line">1. Hot - for both storage and compute. The data that is popular and still being used for processing will stay in this policy. When a block is hot, all replicas are stored in DISK.</span><br><span class="line">2. Cold - only for storage with limited compute. The data that is no longer being used, or data that needs to be archived is moved from hot storage to cold storage. When a block is cold, all replicas are stored in ARCHIVE.</span><br><span class="line">3. Warm - partially hot and partially cold. When a block is warm, some of its replicas are stored in DISK and the remaining replicas are stored in ARCHIVE.</span><br><span class="line">4. All_SSD - for storing all replicas in SSD.</span><br><span class="line">5. One_SSD - for storing one of the replicas in SSD. The remaining replicas are stored in DISK.</span><br><span class="line">6. Lazy_Persist - for writing blocks with single replica in memory. The replica is first written in RAM_DISK and then it is lazily persisted in DISK.</span><br><span class="line">7. Provided - for storing data outside HDFS. See also HDFS Provided Storage.</span><br></pre></td></tr></table></figure>
+
+
+<table>
+<thead>
+<tr>
+<th align="left">Policy ID</th>
+<th align="left">Policy Name</th>
+<th align="left">Block Placement (n  replicas)</th>
+<th align="left">Fallback storages for creation</th>
+<th align="left">Fallback storages for replication</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">15</td>
+<td align="left">Lazy_Persist</td>
+<td align="left">RAM_DISK: 1, DISK: n-1</td>
+<td align="left">DISK</td>
+<td align="left">DISK</td>
+</tr>
+<tr>
+<td align="left">12</td>
+<td align="left">All_SSD</td>
+<td align="left">SSD: n</td>
+<td align="left">DISK</td>
+<td align="left">DISK</td>
+</tr>
+<tr>
+<td align="left">10</td>
+<td align="left">One_SSD</td>
+<td align="left">SSD: 1, DISK: n-1</td>
+<td align="left">SSD, DISK</td>
+<td align="left">SSD, DISK</td>
+</tr>
+<tr>
+<td align="left">7</td>
+<td align="left">Hot (default)</td>
+<td align="left">DISK: n</td>
+<td align="left"><none></td>
+<td align="left">ARCHIVE</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">Warm</td>
+<td align="left">DISK: 1, ARCHIVE: n-1</td>
+<td align="left">ARCHIVE, DISK</td>
+<td align="left">ARCHIVE, DISK</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">Cold</td>
+<td align="left">ARCHIVE: n</td>
+<td align="left"><none></td>
+<td align="left"><none></td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">Provided</td>
+<td align="left">PROVIDED: 1, DISK: n-1</td>
+<td align="left">PROVIDED, DISK</td>
+<td align="left">PROVIDED, DISK</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/03/bigdata/%E7%BB%84%E4%BB%B6/HDFS/" data-id="cl97yz4mx00246zuj1ohc35cn" data-title="HDFS" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag">大数据</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell/">Shell</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%83%A8%E7%BD%B2/">部署</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Airflow%E5%AE%89%E8%A3%85/" rel="tag">Airflow安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ClickHouse/" rel="tag">ClickHouse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flink/" rel="tag">Flink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flume/" rel="tag">Flume</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HBase/" rel="tag">HBase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hive/" rel="tag">Hive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/" rel="tag">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kafka/" rel="tag">Kafka</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" rel="tag">Leetcode每日一题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LightGBM/" rel="tag">LightGBM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spark/" rel="tag">Spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XGBoost/" rel="tag">XGBoost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" rel="tag">备忘录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag">大数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag">并发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E4%BB%93%E8%AE%BE%E8%AE%A1/" rel="tag">数仓设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%97%E6%8E%92%E5%88%97/" rel="tag">数字排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" rel="tag">消息队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E6%83%B3/" rel="tag">随想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Airflow%E5%AE%89%E8%A3%85/" style="font-size: 10px;">Airflow安装</a> <a href="/tags/ClickHouse/" style="font-size: 10px;">ClickHouse</a> <a href="/tags/Flink/" style="font-size: 10px;">Flink</a> <a href="/tags/Flume/" style="font-size: 10px;">Flume</a> <a href="/tags/HBase/" style="font-size: 10px;">HBase</a> <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/Hive/" style="font-size: 10px;">Hive</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Kafka/" style="font-size: 10px;">Kafka</a> <a href="/tags/Leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" style="font-size: 17.5px;">Leetcode每日一题</a> <a href="/tags/LightGBM/" style="font-size: 10px;">LightGBM</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Spark/" style="font-size: 15px;">Spark</a> <a href="/tags/XGBoost/" style="font-size: 10px;">XGBoost</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">分布式系统</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 10px;">大数据</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 12.5px;">字符串</a> <a href="/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 12.5px;">并发</a> <a href="/tags/%E6%95%B0%E4%BB%93%E8%AE%BE%E8%AE%A1/" style="font-size: 20px;">数仓设计</a> <a href="/tags/%E6%95%B0%E5%AD%97%E6%8E%92%E5%88%97/" style="font-size: 10px;">数字排列</a> <a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" style="font-size: 10px;">消息队列</a> <a href="/tags/%E9%9A%8F%E6%83%B3/" style="font-size: 12.5px;">随想</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 10px;">面试题</a> <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">项目</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/10/23/java/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/23/shell/">Shell</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/22/java/NIO/">NIO</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/21/bigdata/%E7%BB%84%E4%BB%B6/Airflow/">Airflow</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/15/bigdata/%E7%BB%84%E4%BB%B6/%E7%AC%94%E8%AE%B0%E6%A0%BC%E5%BC%8F/">笔记格式</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 zxy<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

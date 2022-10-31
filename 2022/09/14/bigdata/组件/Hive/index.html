@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hive | 坚持不下去的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="[TOC] Hive数据单元 数据库 数据表 分区 分桶  数据类型基础类型 整形 INT BIGINT   布尔类型 浮点数 FLOAT DECIMAL   定长浮点数 DECIMAL   日期和时间类型 TIMESTAMP: 没有时区的时间 DATE: 日期   二进制 BINARY: 比特的序列    复杂类型 结构体 Structs 字典 Map 数组 Array  DDL创建数据库123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hive">
+<meta property="og:url" content="http://example.com/2022/09/14/bigdata/%E7%BB%84%E4%BB%B6/Hive/index.html">
+<meta property="og:site_name" content="坚持不下去的博客">
+<meta property="og:description" content="[TOC] Hive数据单元 数据库 数据表 分区 分桶  数据类型基础类型 整形 INT BIGINT   布尔类型 浮点数 FLOAT DECIMAL   定长浮点数 DECIMAL   日期和时间类型 TIMESTAMP: 没有时区的时间 DATE: 日期   二进制 BINARY: 比特的序列    复杂类型 结构体 Structs 字典 Map 数组 Array  DDL创建数据库123">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-14T11:14:03.000Z">
+<meta property="article:modified_time" content="2022-10-10T01:55:50.396Z">
+<meta property="article:author" content="zxy">
+<meta property="article:tag" content="Hive">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="坚持不下去的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">坚持不下去的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">再坚持一天</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-bigdata/组件/Hive" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/14/bigdata/%E7%BB%84%E4%BB%B6/Hive/" class="article-date">
+  <time class="dt-published" datetime="2022-09-14T11:14:03.000Z" itemprop="datePublished">2022-09-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Hive
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<h1 id="Hive"><a href="#Hive" class="headerlink" title="Hive"></a>Hive</h1><h2 id="数据单元"><a href="#数据单元" class="headerlink" title="数据单元"></a>数据单元</h2><ol>
+<li>数据库</li>
+<li>数据表</li>
+<li>分区</li>
+<li>分桶</li>
+</ol>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="基础类型"><a href="#基础类型" class="headerlink" title="基础类型"></a>基础类型</h3><ol>
+<li>整形<ol>
+<li>INT</li>
+<li>BIGINT</li>
+</ol>
+</li>
+<li>布尔类型</li>
+<li>浮点数<ol>
+<li>FLOAT</li>
+<li>DECIMAL</li>
+</ol>
+</li>
+<li>定长浮点数<ol>
+<li>DECIMAL</li>
+</ol>
+</li>
+<li>日期和时间类型<ol>
+<li>TIMESTAMP: 没有时区的时间</li>
+<li>DATE: 日期</li>
+</ol>
+</li>
+<li>二进制<ol>
+<li>BINARY: 比特的序列</li>
+</ol>
+</li>
+</ol>
+<h3 id="复杂类型"><a href="#复杂类型" class="headerlink" title="复杂类型"></a>复杂类型</h3><ol>
+<li>结构体 Structs</li>
+<li>字典 Map</li>
+<li>数组 Array</li>
+</ol>
+<h2 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h2><h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE [REMOTE] (DATABASE|SCHEMA) [IF NOT EXISTS] database_name</span><br><span class="line">  [COMMENT database_comment]</span><br><span class="line">  [LOCATION hdfs_path]</span><br><span class="line">  [MANAGEDLOCATION hdfs_path]</span><br><span class="line">  [WITH DBPROPERTIES (property_name=property_value, ...)];</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP (DATABASE|SCHEMA) [IF EXISTS] database_name [RESTRICT|CASCADE];</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改数据库"><a href="#修改数据库" class="headerlink" title="修改数据库"></a>修改数据库</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ALTER (DATABASE|SCHEMA) database_name SET DBPROPERTIES (property_name=property_value, ...);   -- (Note: SCHEMA added in Hive 0.14.0)</span><br><span class="line"> </span><br><span class="line">ALTER (DATABASE|SCHEMA) database_name SET OWNER [USER|ROLE] user_or_role;   -- (Note: Hive 0.13.0 and later; SCHEMA added in Hive 0.14.0)</span><br><span class="line">  </span><br><span class="line">ALTER (DATABASE|SCHEMA) database_name SET LOCATION hdfs_path; -- (Note: Hive 2.2.1, 2.4.0 and later)</span><br><span class="line"> </span><br><span class="line">ALTER (DATABASE|SCHEMA) database_name SET MANAGEDLOCATION hdfs_path; -- (Note: Hive 4.0.0 and later)</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用数据库"><a href="#使用数据库" class="headerlink" title="使用数据库"></a>使用数据库</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">USE database_name;</span><br><span class="line">USE DEFAULT;</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建、删除、修改连接器"><a href="#创建、删除、修改连接器" class="headerlink" title="创建、删除、修改连接器"></a>创建、删除、修改连接器</h3><p>Hive可以连接JDBC的数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">CREATE CONNECTOR [IF NOT EXISTS] connector_name</span><br><span class="line">  [TYPE datasource_type]</span><br><span class="line">  [URL datasource_url]</span><br><span class="line">  [COMMENT connector_comment]</span><br><span class="line">  [WITH DCPROPERTIES (property_name=property_value, ...)];</span><br><span class="line"></span><br><span class="line">DROP CONNECTOR [IF EXISTS] connector_name;</span><br><span class="line"></span><br><span class="line">ALTER CONNECTOR connector_name SET DCPROPERTIES (property_name=property_value, ...);</span><br><span class="line"> </span><br><span class="line">ALTER CONNECTOR connector_name SET URL new_url;</span><br><span class="line">  </span><br><span class="line">ALTER CONNECTOR connector_name SET OWNER [USER|ROLE] user_or_role;</span><br></pre></td></tr></table></figure>
+
+<h3 id="建表"><a href="#建表" class="headerlink" title="建表"></a>建表</h3><p>非常复杂的语句</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">CREATE [TEMPORARY] [EXTERNAL] TABLE [IF NOT EXISTS] [db_name.]table_name    -- (Note: TEMPORARY available in Hive 0.14.0 and later)</span><br><span class="line">  [(col_name data_type [column_constraint_specification] [COMMENT col_comment], ... [constraint_specification])]</span><br><span class="line">  [COMMENT table_comment]</span><br><span class="line">  [PARTITIONED BY (col_name data_type [COMMENT col_comment], ...)]</span><br><span class="line">  [CLUSTERED BY (col_name, col_name, ...) [SORTED BY (col_name [ASC|DESC], ...)] INTO num_buckets BUCKETS]</span><br><span class="line">  [SKEWED BY (col_name, col_name, ...)                  -- (Note: Available in Hive 0.10.0 and later)]</span><br><span class="line">     ON ((col_value, col_value, ...), (col_value, col_value, ...), ...)</span><br><span class="line">     [STORED AS DIRECTORIES]</span><br><span class="line">  [</span><br><span class="line">   [ROW FORMAT row_format] </span><br><span class="line">   [STORED AS file_format]</span><br><span class="line">     | STORED BY &#x27;storage.handler.class.name&#x27; [WITH SERDEPROPERTIES (...)]  -- (Note: Available in Hive 0.6.0 and later)</span><br><span class="line">  ]</span><br><span class="line">  [LOCATION hdfs_path]</span><br><span class="line">  [TBLPROPERTIES (property_name=property_value, ...)]   -- (Note: Available in Hive 0.6.0 and later)</span><br><span class="line">  [AS select_statement];   -- (Note: Available in Hive 0.5.0 and later; not supported for external tables)</span><br><span class="line"> </span><br><span class="line">CREATE [TEMPORARY] [EXTERNAL] TABLE [IF NOT EXISTS] [db_name.]table_name</span><br><span class="line">  LIKE existing_table_or_view_name</span><br><span class="line">  [LOCATION hdfs_path];</span><br><span class="line"> </span><br><span class="line">data_type</span><br><span class="line">  : primitive_type</span><br><span class="line">  | array_type</span><br><span class="line">  | map_type</span><br><span class="line">  | struct_type</span><br><span class="line">  | union_type  -- (Note: Available in Hive 0.7.0 and later)</span><br><span class="line"> </span><br><span class="line">primitive_type</span><br><span class="line">  : TINYINT</span><br><span class="line">  | SMALLINT</span><br><span class="line">  | INT</span><br><span class="line">  | BIGINT</span><br><span class="line">  | BOOLEAN</span><br><span class="line">  | FLOAT</span><br><span class="line">  | DOUBLE</span><br><span class="line">  | DOUBLE PRECISION -- (Note: Available in Hive 2.2.0 and later)</span><br><span class="line">  | STRING</span><br><span class="line">  | BINARY      -- (Note: Available in Hive 0.8.0 and later)</span><br><span class="line">  | TIMESTAMP   -- (Note: Available in Hive 0.8.0 and later)</span><br><span class="line">  | DECIMAL     -- (Note: Available in Hive 0.11.0 and later)</span><br><span class="line">  | DECIMAL(precision, scale)  -- (Note: Available in Hive 0.13.0 and later)</span><br><span class="line">  | DATE        -- (Note: Available in Hive 0.12.0 and later)</span><br><span class="line">  | VARCHAR     -- (Note: Available in Hive 0.12.0 and later)</span><br><span class="line">  | CHAR        -- (Note: Available in Hive 0.13.0 and later)</span><br><span class="line"> </span><br><span class="line">array_type</span><br><span class="line">  : ARRAY &lt; data_type &gt;</span><br><span class="line"> </span><br><span class="line">map_type</span><br><span class="line">  : MAP &lt; primitive_type, data_type &gt;</span><br><span class="line"> </span><br><span class="line">struct_type</span><br><span class="line">  : STRUCT &lt; col_name : data_type [COMMENT col_comment], ...&gt;</span><br><span class="line"> </span><br><span class="line">union_type</span><br><span class="line">   : UNIONTYPE &lt; data_type, data_type, ... &gt;  -- (Note: Available in Hive 0.7.0 and later)</span><br><span class="line"> </span><br><span class="line">row_format</span><br><span class="line">  : DELIMITED [FIELDS TERMINATED BY char [ESCAPED BY char]] [COLLECTION ITEMS TERMINATED BY char]</span><br><span class="line">        [MAP KEYS TERMINATED BY char] [LINES TERMINATED BY char]</span><br><span class="line">        [NULL DEFINED AS char]   -- (Note: Available in Hive 0.13 and later)</span><br><span class="line">  | SERDE serde_name [WITH SERDEPROPERTIES (property_name=property_value, property_name=property_value, ...)]</span><br><span class="line"> </span><br><span class="line">file_format:</span><br><span class="line">  : SEQUENCEFILE</span><br><span class="line">  | TEXTFILE    -- (Default, depending on hive.default.fileformat configuration)</span><br><span class="line">  | RCFILE      -- (Note: Available in Hive 0.6.0 and later)</span><br><span class="line">  | ORC         -- (Note: Available in Hive 0.11.0 and later)</span><br><span class="line">  | PARQUET     -- (Note: Available in Hive 0.13.0 and later)</span><br><span class="line">  | AVRO        -- (Note: Available in Hive 0.14.0 and later)</span><br><span class="line">  | JSONFILE    -- (Note: Available in Hive 4.0.0 and later)</span><br><span class="line">  | INPUTFORMAT input_format_classname OUTPUTFORMAT output_format_classname</span><br><span class="line"> </span><br><span class="line">column_constraint_specification:</span><br><span class="line">  : [ PRIMARY KEY|UNIQUE|NOT NULL|DEFAULT [default_value]|CHECK  [check_expression] ENABLE|DISABLE NOVALIDATE RELY/NORELY ]</span><br><span class="line"> </span><br><span class="line">default_value:</span><br><span class="line">  : [ LITERAL|CURRENT_USER()|CURRENT_DATE()|CURRENT_TIMESTAMP()|NULL ] </span><br><span class="line"> </span><br><span class="line">constraint_specification:</span><br><span class="line">  : [, PRIMARY KEY (col_name, ...) DISABLE NOVALIDATE RELY/NORELY ]</span><br><span class="line">    [, PRIMARY KEY (col_name, ...) DISABLE NOVALIDATE RELY/NORELY ]</span><br><span class="line">    [, CONSTRAINT constraint_name FOREIGN KEY (col_name, ...) REFERENCES table_name(col_name, ...) DISABLE NOVALIDATE </span><br><span class="line">    [, CONSTRAINT constraint_name UNIQUE (col_name, ...) DISABLE NOVALIDATE RELY/NORELY ]</span><br><span class="line">    [, CONSTRAINT constraint_name CHECK [check_expression] ENABLE|DISABLE NOVALIDATE RELY/NORELY ]</span><br></pre></td></tr></table></figure>
+
+<h2 id="内表和外表的区别"><a href="#内表和外表的区别" class="headerlink" title="内表和外表的区别"></a>内表和外表的区别</h2><p>内表(managed table)是HIVE拥有的，所有的操作都应该通过Hive来进行</p>
+<ol>
+<li>内表的存储路径<code>hive.metastore.warehouse.dir</code></li>
+<li>内表和外表的区别<ol>
+<li>MERGE&#x2F;TRUNCATE&#x2F;CONCATENATE等等只能应用在内表上</li>
+<li>查询缓存只能应用在内表上</li>
+<li>ACID和事务只能用在内表上</li>
+<li>DROP只会删除外表的元数据</li>
+<li>只有RELY能应用到外表</li>
+</ol>
+</li>
+</ol>
+<h2 id="序列化和反序列化"><a href="#序列化和反序列化" class="headerlink" title="序列化和反序列化"></a>序列化和反序列化</h2><h4 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h4><p>partition的字段并不是数据表的内容，而只是目录</p>
+<h2 id="存储的文件类型"><a href="#存储的文件类型" class="headerlink" title="存储的文件类型"></a>存储的文件类型</h2><p>不同的存储文件类型使用不同的存储格式，不同的存储效率。部分存储文件甚者支持索引。</p>
+<table>
+<thead>
+<tr>
+<th align="left">存储文件</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">TextFile</td>
+<td align="left">1. 默认格式 2. 行存储 3. 数据不压缩 4. 反序列化需要逐个判断是不是分隔符和行结束符</td>
+</tr>
+<tr>
+<td align="left">SequenceFile</td>
+<td align="left">1. 二进制文件 2. 数据可以压缩</td>
+</tr>
+<tr>
+<td align="left">ORCFILE</td>
+<td align="left">1. 数据按行分块 2. 每块按照列存储 3. 压缩率较高 4. RCFILE的改进型</td>
+</tr>
+<tr>
+<td align="left">PARQUET</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">AVRO</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">RCFILE</td>
+<td align="left">1. 数据按行分块 2. 每块按照列存储</td>
+</tr>
+<tr>
+<td align="left">JSONFILE</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h2 id="文件压缩"><a href="#文件压缩" class="headerlink" title="文件压缩"></a>文件压缩</h2><ol>
+<li>压缩存储<ol>
+<li>支持从压缩文件中加载数据</li>
+<li>支持Gzip和Bzip2</li>
+</ol>
+</li>
+<li>LZO压缩</li>
+</ol>
+<h2 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h2><h3 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h3><ol>
+<li><p>从文件导入<br>可以从本地或者HDFS中导入</p>
+</li>
+<li><p>从查询中导入</p>
+</li>
+<li><p>直接插值</p>
+</li>
+</ol>
+<h3 id="把数据写到文件中"><a href="#把数据写到文件中" class="headerlink" title="把数据写到文件中"></a>把数据写到文件中</h3><h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> tablename <span class="keyword">SET</span> <span class="keyword">column</span> <span class="operator">=</span> <span class="keyword">value</span> [, <span class="keyword">column</span> <span class="operator">=</span> <span class="keyword">value</span> ...] [<span class="keyword">WHERE</span> expression]</span><br></pre></td></tr></table></figure>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM tablename [WHERE expression]</span><br></pre></td></tr></table></figure>
+
+<h3 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MERGE INTO &lt;target table&gt; AS T USING &lt;source expression/table&gt; AS S</span><br><span class="line">ON &lt;boolean expression1&gt;</span><br><span class="line">WHEN MATCHED [AND &lt;boolean expression2&gt;] THEN UPDATE SET &lt;set clause list&gt;</span><br><span class="line">WHEN MATCHED [AND &lt;boolean expression3&gt;] THEN DELETE</span><br><span class="line">WHEN NOT MATCHED [AND &lt;boolean expression4&gt;] THEN INSERT VALUES&lt;value list&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="导入和导出"><a href="#导入和导出" class="headerlink" title="导入和导出"></a>导入和导出</h2><p>数据和元数据一起导入和导出</p>
+<h3 id="Export"><a href="#Export" class="headerlink" title="Export"></a>Export</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">EXPORT TABLE tablename [PARTITION (part_column=&quot;value&quot;[, ...])]</span><br><span class="line">  TO &#x27;export_target_path&#x27; [ FOR replication(&#x27;eventid&#x27;) ]</span><br></pre></td></tr></table></figure>
+
+<h3 id="Import"><a href="#Import" class="headerlink" title="Import"></a>Import</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IMPORT [[EXTERNAL] TABLE new_or_original_tablename [PARTITION (part_column=&quot;value&quot;[, ...])]]</span><br><span class="line">  FROM &#x27;source_path&#x27;</span><br><span class="line">  [LOCATION &#x27;import_target_path&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h3 id="Order-Sort-Cluster-and-Distribute-By"><a href="#Order-Sort-Cluster-and-Distribute-By" class="headerlink" title="Order, Sort, Cluster, and Distribute By"></a>Order, Sort, Cluster, and Distribute By</h3><ol>
+<li>Order By<ol>
+<li>最后的结果有序</li>
+</ol>
+</li>
+<li>Sort By <ol>
+<li>Reducer有序</li>
+</ol>
+</li>
+<li>Distribute by<ol>
+<li>相同的值分配到同一个reducer中</li>
+</ol>
+</li>
+<li>Cluster by <ol>
+<li>Distribute by和Sort By的结合</li>
+</ol>
+</li>
+</ol>
+<h3 id="Hive-Joins"><a href="#Hive-Joins" class="headerlink" title="Hive Joins"></a>Hive Joins</h3><p>非常丰富的Join操作</p>
+<ol>
+<li>Inner Join</li>
+<li>Outer Join</li>
+<li>LEFT SEMI Join</li>
+<li>Cross Join</li>
+</ol>
+<h3 id="开窗函数"><a href="#开窗函数" class="headerlink" title="开窗函数"></a>开窗函数</h3><p>比MySQL更丰富的开窗函数</p>
+<h3 id="执行原理"><a href="#执行原理" class="headerlink" title="执行原理"></a>执行原理</h3><ol>
+<li>执行计划的生成<ol>
+<li>抽象语法树</li>
+<li>逻辑执行计划</li>
+<li>逻辑执行计划优化</li>
+<li>物理执行计划优化</li>
+<li>下发执行</li>
+</ol>
+</li>
+</ol>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><table>
+<thead>
+<tr>
+<th align="left">函数名</th>
+<th align="left">说明</th>
+<th align="left">用例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">lateral view</td>
+<td align="left">把多行输出组成虚拟表并且和当前表join</td>
+<td align="left">SELECT page_id,ad_id FROM pageAds LATERAL VIEW explode(adid_list)adTable AS ad_id;</td>
+</tr>
+<tr>
+<td align="left">collect_list</td>
+<td align="left">和group by一起使用，列转行</td>
+<td align="left">select col1, collect_list(col2) from dual group by col1;</td>
+</tr>
+<tr>
+<td align="left">collect_set</td>
+<td align="left">和collect_list的区别在于collect_set去重</td>
+<td align="left">select col1, collect_set(col2) from dual group by col1;</td>
+</tr>
+</tbody></table>
+<h3 id="窗口函数"><a href="#窗口函数" class="headerlink" title="窗口函数"></a>窗口函数</h3><ol>
+<li>NTILE切片</li>
+</ol>
+<h3 id="列转行"><a href="#列转行" class="headerlink" title="列转行"></a>列转行</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">collect_set：去重</span><br><span class="line">collect_list：不去重</span><br></pre></td></tr></table></figure>
+
+<h3 id="拼接"><a href="#拼接" class="headerlink" title="拼接"></a>拼接</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">concat</span><br><span class="line">concat_ws</span><br></pre></td></tr></table></figure>
+
+<h2 id="DerSe"><a href="#DerSe" class="headerlink" title="DerSe"></a>DerSe</h2><p>序列化和反序列化</p>
+<ol>
+<li>InputFormat</li>
+<li>DerSe.deserialize</li>
+<li>Derse.getObjectInspector()</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ive&#x27;s execution engine (referred to as just engine henceforth) first uses the configured InputFormat to read in a record of data (the value object returned by the RecordReader of the InputFormat).</span><br><span class="line">The engine then invokes Serde.deserialize() to perform deserialization of the record. There is no real binding that the deserialized object returned by this method indeed be a fully deserialized one. For instance, in Hive there is a LazyStruct object which is used by the LazySimpleSerDe to represent the deserialized object. This object does not have the bytes deserialized up front but does at the point of access of a field.</span><br><span class="line">The engine also gets hold of the ObjectInspector to use by invoking Serde.getObjectInspector(). This has to be a subclass of structObjectInspector since a record representing a row of input data is essentially a struct type.</span><br><span class="line">The engine passes the deserialized object and the object inspector to all operators for their use in order to get the needed data from the record. The object inspector knows how to construct individual fields out of a deserialized record. For example, StructObjectInspector has a method called getStructFieldData() which returns a certain field in the record. This is the mechanism to access individual fields. For instance ExprNodeColumnEvaluator class which can extract a column from the input row uses this mechanism to get the real column object from the serialized row object. This real column object in turn can be a complex type (like a struct). To access sub fields in such complex typed objects, an operator would use the object inspector associated with that field (The top level StructObjectInspector for the row maintains a list of field level object inspectors which can be used to interpret individual fields).</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Output is analogous to input. The engine passes the deserialized Object representing a record and the corresponding ObjectInspector to Serde.serialize(). In this context serialization means converting the record object to an object of the type expected by the OutputFormat which will be used to perform the write. To perform this conversion, the serialize() method can make use of the passed ObjectInspector to get the individual fields in the record in order to convert the record to the appropriate type.</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="UDF函数"><a href="#UDF函数" class="headerlink" title="UDF函数"></a>UDF函数</h2><p>在Hive定义的函数外，可以实现自己的UDF函数对数据做额外的处理</p>
+<ol>
+<li>使用UDF的流程<ol>
+<li>引入对应的Java包<code>org.apache.hadoop.hive.ql.exec.UDF</code></li>
+<li>定义处理类</li>
+<li>自己编写的代码打包为Jar，放入Hive的类加载路劲</li>
+<li>在Hive中引入函数</li>
+<li>使用函数</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package com.example.hive.udf;</span><br><span class="line"> </span><br><span class="line">import org.apache.hadoop.hive.ql.exec.UDF;</span><br><span class="line">import org.apache.hadoop.io.Text;</span><br><span class="line"> </span><br><span class="line">public final class Lower extends UDF &#123;</span><br><span class="line">  public Text evaluate(final Text s) &#123;</span><br><span class="line">    if (s == null) &#123; return null; &#125;</span><br><span class="line">    return new Text(s.toString().toLowerCase());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; add jar my_jar.jar;</span><br><span class="line">Added my_jar.jar to class path</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create temporary function my_lower as &#x27;com.example.hive.udf.Lower&#x27;;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>种类<ol>
+<li>UDF: 一对一<ol>
+<li>继承UDF类，实现<code>evaluate</code>函数</li>
+</ol>
+</li>
+<li>UDAF：多对一<ol>
+<li>继承UDTF类，实现<code>initialize</code>，<code>process</code>， <code>close</code>函数</li>
+</ol>
+</li>
+<li>UDTF： 一对多</li>
+</ol>
+</li>
+</ol>
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><ol>
+<li>全局配置<ol>
+<li>Fetch抓取<ol>
+<li>对于一些简单任务比如读取表的字段，不启动Mapreduce而是直接输出</li>
+</ol>
+</li>
+<li>本地任务<ol>
+<li>当数据量非常小的情况，直接使用local模式执行而不用Yarn出发任务</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>查询优化<ol>
+<li>小表join大表<ol>
+<li>小表分配到每个mapper中，直接在mapper段完成join</li>
+</ol>
+</li>
+<li>空key过滤<ol>
+<li>连接键上异常数据如空值过多导致倾斜</li>
+</ol>
+</li>
+<li>group by<ol>
+<li>开启map端聚合，减少发送到reduce的数据量</li>
+<li>进行负载均衡<ol>
+<li>进行两次reduce</li>
+<li>第一次map的输出结果随机地分配到reduce中进行处理</li>
+<li>第二次再按照实际的key分配到对应的reduce中</li>
+</ol>
+</li>
+<li>设置在map端进行聚合操作的条目数量</li>
+</ol>
+</li>
+<li>count(distinct)去重<ol>
+<li>使用group by和count进行替换</li>
+</ol>
+</li>
+<li>避免笛卡尔积</li>
+<li>行列过滤</li>
+</ol>
+</li>
+</ol>
+<h2 id="MapReduce设置"><a href="#MapReduce设置" class="headerlink" title="MapReduce设置"></a>MapReduce设置</h2><ol>
+<li>Map数量<ol>
+<li>考虑因素<ol>
+<li>输入文件数量</li>
+<li>输入文件大小</li>
+<li>集群文件块大小</li>
+</ol>
+</li>
+<li>合适的map数量<ol>
+<li>小文件合并-&gt;减少map数</li>
+<li>小记录-&gt;增加map数<ol>
+<li>文件不小，但是又非常多的记录</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Reduce数<ol>
+<li>每个reduce处理的数据量，默认是256MB</li>
+<li>每个任务最大的reduce数，默认是1009</li>
+<li>计算公式: min(最大reduce数， 数据大小&#x2F;每个reduce的数据量)</li>
+</ol>
+</li>
+</ol>
+<h2 id="数据倾斜"><a href="#数据倾斜" class="headerlink" title="数据倾斜"></a>数据倾斜</h2><p>数据倾斜包括多方面的，当某个map或reduce任务中出现了非常多的数据时就说明Hive中出现了数据倾斜。</p>
+<h2 id="Hive中的索引"><a href="#Hive中的索引" class="headerlink" title="Hive中的索引"></a>Hive中的索引</h2><p>Hive中的索引和MySQL中的不同，尤其是作用和MySQL中的相比非常小。</p>
+<p>Hive中没有主键和外键。</p>
+<ol>
+<li>原始索引</li>
+<li>行组索引<ol>
+<li>以ORC格式存储</li>
+<li>每一个条带中索引最大值和最小值</li>
+<li>索引列需要有序</li>
+</ol>
+</li>
+<li>布隆索引<ol>
+<li>以ORC格式存储</li>
+<li>适合&#x3D;条件的判断</li>
+</ol>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zh2475855601/article/details/112726022">参考资料</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/14/bigdata/%E7%BB%84%E4%BB%B6/Hive/" data-id="cl97yz4my00266zuj858680xz" data-title="Hive" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hive/" rel="tag">Hive</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/09/19/bigdata/philosophy/%E4%BA%8B%E5%AE%9E%E8%A1%A8%E8%AE%BE%E8%AE%A1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          事实表设计
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/09/14/bigdata/%E7%BB%84%E4%BB%B6/MapReduce/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MapReduce</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell/">Shell</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%83%A8%E7%BD%B2/">部署</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Airflow%E5%AE%89%E8%A3%85/" rel="tag">Airflow安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ClickHouse/" rel="tag">ClickHouse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flink/" rel="tag">Flink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flume/" rel="tag">Flume</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HBase/" rel="tag">HBase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hive/" rel="tag">Hive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/" rel="tag">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kafka/" rel="tag">Kafka</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" rel="tag">Leetcode每日一题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LightGBM/" rel="tag">LightGBM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spark/" rel="tag">Spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XGBoost/" rel="tag">XGBoost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" rel="tag">备忘录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag">大数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag">并发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E4%BB%93%E8%AE%BE%E8%AE%A1/" rel="tag">数仓设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%97%E6%8E%92%E5%88%97/" rel="tag">数字排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" rel="tag">消息队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E6%83%B3/" rel="tag">随想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Airflow%E5%AE%89%E8%A3%85/" style="font-size: 10px;">Airflow安装</a> <a href="/tags/ClickHouse/" style="font-size: 10px;">ClickHouse</a> <a href="/tags/Flink/" style="font-size: 10px;">Flink</a> <a href="/tags/Flume/" style="font-size: 10px;">Flume</a> <a href="/tags/HBase/" style="font-size: 10px;">HBase</a> <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/Hive/" style="font-size: 10px;">Hive</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Kafka/" style="font-size: 10px;">Kafka</a> <a href="/tags/Leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" style="font-size: 17.5px;">Leetcode每日一题</a> <a href="/tags/LightGBM/" style="font-size: 10px;">LightGBM</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Spark/" style="font-size: 15px;">Spark</a> <a href="/tags/XGBoost/" style="font-size: 10px;">XGBoost</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">分布式系统</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 10px;">大数据</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 12.5px;">字符串</a> <a href="/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 12.5px;">并发</a> <a href="/tags/%E6%95%B0%E4%BB%93%E8%AE%BE%E8%AE%A1/" style="font-size: 20px;">数仓设计</a> <a href="/tags/%E6%95%B0%E5%AD%97%E6%8E%92%E5%88%97/" style="font-size: 10px;">数字排列</a> <a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" style="font-size: 10px;">消息队列</a> <a href="/tags/%E9%9A%8F%E6%83%B3/" style="font-size: 12.5px;">随想</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 10px;">面试题</a> <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">项目</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/10/23/java/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/23/shell/">Shell</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/22/java/NIO/">NIO</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/21/bigdata/%E7%BB%84%E4%BB%B6/Airflow/">Airflow</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/15/bigdata/%E7%BB%84%E4%BB%B6/%E7%AC%94%E8%AE%B0%E6%A0%BC%E5%BC%8F/">笔记格式</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 zxy<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

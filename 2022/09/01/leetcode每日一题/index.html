@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Leetcode | 坚持不下去的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="目录   题目 类别 链接    1475. 商品折扣后的最终价格 单调栈 链接   50. Pow(x, n) 快速幂 链接   687. 最长同值路径 二叉树、DFS 链接   646. 最长数对链 动态规划 链接   1582. 二进制矩阵中的特殊位置 模拟 链接   652. 寻找重复的子树 二叉树 链接   828. 统计子串中的唯一字符 字符串、找规律 链接   1475. 商品折扣后">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode">
+<meta property="og:url" content="http://example.com/2022/09/01/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/index.html">
+<meta property="og:site_name" content="坚持不下去的博客">
+<meta property="og:description" content="目录   题目 类别 链接    1475. 商品折扣后的最终价格 单调栈 链接   50. Pow(x, n) 快速幂 链接   687. 最长同值路径 二叉树、DFS 链接   646. 最长数对链 动态规划 链接   1582. 二进制矩阵中的特殊位置 模拟 链接   652. 寻找重复的子树 二叉树 链接   828. 统计子串中的唯一字符 字符串、找规律 链接   1475. 商品折扣后">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-01T12:44:51.000Z">
+<meta property="article:modified_time" content="2022-09-06T15:42:18.716Z">
+<meta property="article:author" content="zxy">
+<meta property="article:tag" content="Leetcode每日一题">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="坚持不下去的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">坚持不下去的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">再坚持一天</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-leetcode每日一题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/01/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" class="article-date">
+  <time class="dt-published" datetime="2022-09-01T12:44:51.000Z" itemprop="datePublished">2022-09-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Leetcode
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><table>
+<thead>
+<tr>
+<th align="left">题目</th>
+<th align="left">类别</th>
+<th align="left">链接</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1475. 商品折扣后的最终价格</td>
+<td align="left">单调栈</td>
+<td align="left"><a href="#1475-%E5%95%86%E5%93%81%E6%8A%98%E6%89%A3%E5%90%8E%E7%9A%84%E6%9C%80%E7%BB%88%E4%BB%B7%E6%A0%BC">链接</a></td>
+</tr>
+<tr>
+<td align="left">50. Pow(x, n)</td>
+<td align="left">快速幂</td>
+<td align="left"><a href="#50-powx-n">链接</a></td>
+</tr>
+<tr>
+<td align="left">687. 最长同值路径</td>
+<td align="left">二叉树、DFS</td>
+<td align="left"><a href="#687-%E6%9C%80%E9%95%BF%E5%90%8C%E5%80%BC%E8%B7%AF%E5%BE%84">链接</a></td>
+</tr>
+<tr>
+<td align="left">646. 最长数对链</td>
+<td align="left">动态规划</td>
+<td align="left"><a href="#646-%E6%9C%80%E9%95%BF%E6%95%B0%E5%AF%B9%E9%93%BE">链接</a></td>
+</tr>
+<tr>
+<td align="left">1582. 二进制矩阵中的特殊位置</td>
+<td align="left">模拟</td>
+<td align="left"><a href="#1582-%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BD%8D%E7%BD%AE">链接</a></td>
+</tr>
+<tr>
+<td align="left">652. 寻找重复的子树</td>
+<td align="left">二叉树</td>
+<td align="left"><a href="#652-%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AD%90%E6%A0%91">链接</a></td>
+</tr>
+<tr>
+<td align="left">828. 统计子串中的唯一字符</td>
+<td align="left">字符串、找规律</td>
+<td align="left"><a href="#828-%E7%BB%9F%E8%AE%A1%E5%AD%90%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%94%AF%E4%B8%80%E5%AD%97%E7%AC%A6">链接</a></td>
+</tr>
+</tbody></table>
+<h2 id="1475-商品折扣后的最终价格"><a href="#1475-商品折扣后的最终价格" class="headerlink" title="1475. 商品折扣后的最终价格"></a>1475. 商品折扣后的最终价格</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/final-prices-with-a-special-discount-in-a-shop/">https://leetcode.cn/problems/final-prices-with-a-special-discount-in-a-shop/</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def finalPrices(self, prices: List[int]) -&gt; List[int]:</span><br><span class="line">        # 暴力</span><br><span class="line">        # n = len(prices)</span><br><span class="line">        # res = []</span><br><span class="line">        # for i in range(n):</span><br><span class="line">        #     flag = 0</span><br><span class="line">        #     for j in range(i+1, n):</span><br><span class="line">        #        if prices[j] &lt;= prices[i]:</span><br><span class="line">        #            res.append(prices[i] - prices[j])</span><br><span class="line">        #            flag = 1</span><br><span class="line">        #            break</span><br><span class="line">        #     if flag == 0:</span><br><span class="line">        #         res.append(prices[i])</span><br><span class="line">        # return res</span><br><span class="line"></span><br><span class="line">        # 单调栈</span><br><span class="line">        stack = deque()</span><br><span class="line">        n = len(prices)</span><br><span class="line">        res = []</span><br><span class="line">        for i in range(n-1, -1, -1):</span><br><span class="line">            price = prices[i]</span><br><span class="line">            while stack and stack[-1] &gt; price:</span><br><span class="line">                stack.pop()</span><br><span class="line">            if not stack:</span><br><span class="line">                res.append(price)</span><br><span class="line">            else:</span><br><span class="line">                res.append(price-stack[-1])</span><br><span class="line">            stack.append(price)</span><br><span class="line">        return res[::-1]</span><br></pre></td></tr></table></figure>
+
+<h2 id="50-Pow-x-n"><a href="#50-Pow-x-n" class="headerlink" title="50. Pow(x, n)"></a>50. Pow(x, n)</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/powx-n/">https://leetcode.cn/problems/powx-n/</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def myPow(self, x: float, n: int) -&gt; float:</span><br><span class="line">        def multi(x, n):</span><br><span class="line">            y = x</span><br><span class="line">            res = 1</span><br><span class="line">            while n:</span><br><span class="line">                if n%2 == 1:</span><br><span class="line">                    res *= y</span><br><span class="line">                y *= y</span><br><span class="line">                n = n // 2</span><br><span class="line">            return res</span><br><span class="line">        return multi(x, n) if n &gt;=0 else 1.0 / multi(x, -n)</span><br></pre></td></tr></table></figure>
+
+<h2 id="687-最长同值路径"><a href="#687-最长同值路径" class="headerlink" title="687. 最长同值路径"></a>687. 最长同值路径</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-univalue-path/">https://leetcode.cn/problems/longest-univalue-path/</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"># Definition for a binary tree node.</span><br><span class="line"># class TreeNode:</span><br><span class="line">#     def __init__(self, val=0, left=None, right=None):</span><br><span class="line">#         self.val = val</span><br><span class="line">#         self.left = left</span><br><span class="line">#         self.right = right</span><br><span class="line">class Solution:</span><br><span class="line">    def longestUnivaluePath(self, root: Optional[TreeNode]) -&gt; int:</span><br><span class="line">        res = -1</span><br><span class="line">        if not root:</span><br><span class="line">            return 0</span><br><span class="line">        def find(root):</span><br><span class="line">            if not root:</span><br><span class="line">                return 0</span><br><span class="line">            else:</span><br><span class="line">                left_dis, right_dis = 0, 0</span><br><span class="line">                if root.left:</span><br><span class="line">                    left_dis = find(root.left)</span><br><span class="line">                    if root.left.val != root.val:</span><br><span class="line">                        left_dis = 0</span><br><span class="line">                if root.right:</span><br><span class="line">                    right_dis = find(root.right) </span><br><span class="line">                    if root.right.val != root.val:</span><br><span class="line">                        right_dis = 0</span><br><span class="line">                nonlocal res</span><br><span class="line">                res = max(res, left_dis + right_dis + 1)</span><br><span class="line">                return max(left_dis + 1, right_dis + 1)</span><br><span class="line">        find(root)</span><br><span class="line">        return res - 1</span><br></pre></td></tr></table></figure>
+
+<h3 id="646-最长数对链"><a href="#646-最长数对链" class="headerlink" title="646. 最长数对链"></a>646. 最长数对链</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-length-of-pair-chain/">https://leetcode.cn/problems/maximum-length-of-pair-chain/</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def findLongestChain(self, pairs: List[List[int]]) -&gt; int:</span><br><span class="line">        pairs.sort(key=lambda x: x[0])</span><br><span class="line">        n = len(pairs)</span><br><span class="line">        res = 1</span><br><span class="line">        dp = [1 for i in range(n)]</span><br><span class="line">        for i in range(n):</span><br><span class="line">            for j in range(i):</span><br><span class="line">                if pairs[i][0] &gt; pairs[j][1]:</span><br><span class="line">                    dp[i] = dp[j] + 1</span><br><span class="line">        return max(dp)</span><br></pre></td></tr></table></figure>
+
+<h3 id="1582-二进制矩阵中的特殊位置"><a href="#1582-二进制矩阵中的特殊位置" class="headerlink" title="1582. 二进制矩阵中的特殊位置"></a>1582. 二进制矩阵中的特殊位置</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/special-positions-in-a-binary-matrix/">https://leetcode.cn/problems/special-positions-in-a-binary-matrix/</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def numSpecial(self, mat: List[List[int]]) -&gt; int:</span><br><span class="line">        m = len(mat)</span><br><span class="line">        n = len(mat[0])</span><br><span class="line">        res = 0</span><br><span class="line">        rows_sum = [sum(row) for row in mat]</span><br><span class="line">        cols_sum = [sum(col) for col in zip(*mat)]</span><br><span class="line">        for i in range(m):</span><br><span class="line">            for j in range(n):</span><br><span class="line">                if mat[i][j] == 1 and rows_sum[i] == 1 and cols_sum[j] == 1:</span><br><span class="line">                    res += 1</span><br><span class="line">        return res</span><br></pre></td></tr></table></figure>
+
+<h2 id="652-寻找重复的子树"><a href="#652-寻找重复的子树" class="headerlink" title="652. 寻找重复的子树"></a>652. 寻找重复的子树</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-duplicate-subtrees/">https://leetcode.cn/problems/find-duplicate-subtrees/</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"># Definition for a binary tree node.</span><br><span class="line"># class TreeNode:</span><br><span class="line">#     def __init__(self, val=0, left=None, right=None):</span><br><span class="line">#         self.val = val</span><br><span class="line">#         self.left = left</span><br><span class="line">#         self.right = right</span><br><span class="line">class Solution:</span><br><span class="line">    def findDuplicateSubtrees(self, root: Optional[TreeNode]) -&gt; List[Optional[TreeNode]]:</span><br><span class="line">        # 暴力法，也没有解决重复结果的问题</span><br><span class="line">        # def isSameTree(tree1, tree2):</span><br><span class="line">        #     if tree1 and tree2: </span><br><span class="line">        #         if tree1.val != tree2.val:</span><br><span class="line">        #             return False</span><br><span class="line">        #         else:</span><br><span class="line">        #             return isSameTree(tree1.left, tree2.left) and isSameTree(tree1.right, tree2.right)</span><br><span class="line">        #     elif not tree1 and not tree2:</span><br><span class="line">        #         return True</span><br><span class="line">        #     else:</span><br><span class="line">        #         return False </span><br><span class="line">        # nodes = []</span><br><span class="line">        # queue = collections.deque()</span><br><span class="line">        # queue.append(root)</span><br><span class="line">        # while queue:</span><br><span class="line">        #     node = queue.popleft()</span><br><span class="line">        #     if node.left:</span><br><span class="line">        #         queue.append(node.left)</span><br><span class="line">        #     if node.right:</span><br><span class="line">        #         queue.append(node.right)</span><br><span class="line">        #     nodes.append(node)</span><br><span class="line">        # n = len(nodes)</span><br><span class="line">        # res = []</span><br><span class="line">        # for i in range(n):</span><br><span class="line">        #     for j in range(i+1, n):</span><br><span class="line">        #         if isSameTree(nodes[i], nodes[j]):</span><br><span class="line">        #             res.append(nodes[j])</span><br><span class="line">        # return res</span><br><span class="line">        # 二叉树的序列化</span><br><span class="line">        def dfs(node):</span><br><span class="line">            if not node:</span><br><span class="line">                return &quot;&quot;</span><br><span class="line">            serial = &quot;&quot;.join([&quot;(&quot;, dfs(node.left), &quot;)&quot;, &quot;(&quot;, str(node.val), &quot;)&quot;, &quot;(&quot;, dfs(node.right), &quot;)&quot;])</span><br><span class="line">            if serial in map_:</span><br><span class="line">                res.add(map_[serial])</span><br><span class="line">            else:</span><br><span class="line">                map_[serial] = node</span><br><span class="line">            return serial</span><br><span class="line">        res = set()</span><br><span class="line">        map_ = dict()</span><br><span class="line">        dfs(root)</span><br><span class="line">        return list(res)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="828-统计子串中的唯一字符"><a href="#828-统计子串中的唯一字符" class="headerlink" title="828. 统计子串中的唯一字符"></a>828. 统计子串中的唯一字符</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-unique-characters-of-all-substrings-of-a-given-string/submissions/">https://leetcode.cn/problems/count-unique-characters-of-all-substrings-of-a-given-string/submissions/</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def uniqueLetterString(self, s: str) -&gt; int:</span><br><span class="line">        dict_ = collections.defaultdict(list)</span><br><span class="line">        for i, v in enumerate(s):</span><br><span class="line">            dict_[v].append(i)</span><br><span class="line">        res = 0</span><br><span class="line">        for value in dict_.values():</span><br><span class="line">            value = [-1] + value + [len(s)]</span><br><span class="line">            for n in range(1, len(value)-1):</span><br><span class="line">                res += (value[n] - value[n-1]) * (value[n+1]-value[n]) </span><br><span class="line">        return res</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/01/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" data-id="cl97yz4lq00046zuj1b424km2" data-title="Leetcode" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" rel="tag">Leetcode每日一题</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/09/03/bigdata/%E7%BB%84%E4%BB%B6/HDFS/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          HDFS
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/09/01/Python%E4%B8%BA%E4%BB%80%E4%B9%88%E6%B2%A1%E6%9C%89%E9%87%8D%E8%BD%BD%EF%BC%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python为什么没有重载？</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hadoop/">Hadoop</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell/">Shell</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%83%A8%E7%BD%B2/">部署</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Airflow%E5%AE%89%E8%A3%85/" rel="tag">Airflow安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ClickHouse/" rel="tag">ClickHouse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flink/" rel="tag">Flink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flume/" rel="tag">Flume</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HBase/" rel="tag">HBase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hive/" rel="tag">Hive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/" rel="tag">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kafka/" rel="tag">Kafka</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" rel="tag">Leetcode每日一题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LightGBM/" rel="tag">LightGBM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spark/" rel="tag">Spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XGBoost/" rel="tag">XGBoost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" rel="tag">备忘录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag">大数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag">并发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E4%BB%93%E8%AE%BE%E8%AE%A1/" rel="tag">数仓设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%97%E6%8E%92%E5%88%97/" rel="tag">数字排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" rel="tag">消息队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%8F%E6%83%B3/" rel="tag">随想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Airflow%E5%AE%89%E8%A3%85/" style="font-size: 10px;">Airflow安装</a> <a href="/tags/ClickHouse/" style="font-size: 10px;">ClickHouse</a> <a href="/tags/Flink/" style="font-size: 10px;">Flink</a> <a href="/tags/Flume/" style="font-size: 10px;">Flume</a> <a href="/tags/HBase/" style="font-size: 10px;">HBase</a> <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/Hive/" style="font-size: 10px;">Hive</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Kafka/" style="font-size: 10px;">Kafka</a> <a href="/tags/Leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" style="font-size: 17.5px;">Leetcode每日一题</a> <a href="/tags/LightGBM/" style="font-size: 10px;">LightGBM</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Spark/" style="font-size: 15px;">Spark</a> <a href="/tags/XGBoost/" style="font-size: 10px;">XGBoost</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">分布式系统</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 10px;">大数据</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 12.5px;">字符串</a> <a href="/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 12.5px;">并发</a> <a href="/tags/%E6%95%B0%E4%BB%93%E8%AE%BE%E8%AE%A1/" style="font-size: 20px;">数仓设计</a> <a href="/tags/%E6%95%B0%E5%AD%97%E6%8E%92%E5%88%97/" style="font-size: 10px;">数字排列</a> <a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" style="font-size: 10px;">消息队列</a> <a href="/tags/%E9%9A%8F%E6%83%B3/" style="font-size: 12.5px;">随想</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 10px;">面试题</a> <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">项目</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/10/23/java/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/23/shell/">Shell</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/22/java/NIO/">NIO</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/21/bigdata/%E7%BB%84%E4%BB%B6/Airflow/">Airflow</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/15/bigdata/%E7%BB%84%E4%BB%B6/%E7%AC%94%E8%AE%B0%E6%A0%BC%E5%BC%8F/">笔记格式</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 zxy<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
