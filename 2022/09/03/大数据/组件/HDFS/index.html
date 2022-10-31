@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>HDFS | 坚持不下去的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="HDFSHDFS的组成 NameNode DataNode SecondaryNameNode   关键问题数据复制 数据的复制分数 复制数据的存放位置 数据的复制方式  元数据的持久化 NameNode的数据文件元数据和DataNone的数据文件的一致性 FsImage和EditLog  通信协议健壮性 DataNode失效 数据平衡 数据损坏和数据校验 元数据备份 数据快照  数据组织 分块存">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HDFS">
+<meta property="og:url" content="https://github.com/Zhenxuyang/zhenxuyang.github.io/2022/09/03/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/HDFS/index.html">
+<meta property="og:site_name" content="坚持不下去的博客">
+<meta property="og:description" content="HDFSHDFS的组成 NameNode DataNode SecondaryNameNode   关键问题数据复制 数据的复制分数 复制数据的存放位置 数据的复制方式  元数据的持久化 NameNode的数据文件元数据和DataNone的数据文件的一致性 FsImage和EditLog  通信协议健壮性 DataNode失效 数据平衡 数据损坏和数据校验 元数据备份 数据快照  数据组织 分块存">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-03T07:42:52.000Z">
+<meta property="article:modified_time" content="2022-09-03T09:25:56.802Z">
+<meta property="article:author" content="zxy">
+<meta property="article:tag" content="大数据">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/Zhenxuyang/zhenxuyang.github.io/atom.xml" title="坚持不下去的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/Zhenxuyang/zhenxuyang.github.io/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/Zhenxuyang/zhenxuyang.github.io/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/Zhenxuyang/zhenxuyang.github.io/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/Zhenxuyang/zhenxuyang.github.io/" id="logo">坚持不下去的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/Zhenxuyang/zhenxuyang.github.io/" id="subtitle">再坚持一天</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/Zhenxuyang/zhenxuyang.github.io/">Home</a>
+        
+          <a class="main-nav-link" href="/Zhenxuyang/zhenxuyang.github.io/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/Zhenxuyang/zhenxuyang.github.io/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/Zhenxuyang/zhenxuyang.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-大数据/组件/HDFS" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Zhenxuyang/zhenxuyang.github.io/2022/09/03/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/HDFS/" class="article-date">
+  <time class="dt-published" datetime="2022-09-03T07:42:52.000Z" itemprop="datePublished">2022-09-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/Hadoop/">Hadoop</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      HDFS
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h1><h2 id="HDFS的组成"><a href="#HDFS的组成" class="headerlink" title="HDFS的组成"></a>HDFS的组成</h2><ol>
+<li><a href="#namenode">NameNode</a></li>
+<li><a href="#datanode">DataNode</a></li>
+<li><a href="#secondarynamenode">SecondaryNameNode</a></li>
+<li></li>
+</ol>
+<h2 id="关键问题"><a href="#关键问题" class="headerlink" title="关键问题"></a>关键问题</h2><h3 id="数据复制"><a href="#数据复制" class="headerlink" title="数据复制"></a>数据复制</h3><ol>
+<li>数据的复制分数</li>
+<li>复制数据的存放位置</li>
+<li>数据的复制方式</li>
+</ol>
+<h3 id="元数据的持久化"><a href="#元数据的持久化" class="headerlink" title="元数据的持久化"></a>元数据的持久化</h3><ol>
+<li>NameNode的数据文件元数据和DataNone的数据文件的一致性</li>
+<li>FsImage和EditLog</li>
+</ol>
+<h3 id="通信协议"><a href="#通信协议" class="headerlink" title="通信协议"></a>通信协议</h3><h3 id="健壮性"><a href="#健壮性" class="headerlink" title="健壮性"></a>健壮性</h3><ol>
+<li>DataNode失效</li>
+<li>数据平衡</li>
+<li>数据损坏和数据校验</li>
+<li>元数据备份</li>
+<li>数据快照</li>
+</ol>
+<h3 id="数据组织"><a href="#数据组织" class="headerlink" title="数据组织"></a>数据组织</h3><ol>
+<li>分块存储</li>
+<li>写入数据时的流程</li>
+</ol>
+<h3 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h3><ol>
+<li>FS Shell</li>
+<li>DFS</li>
+<li>浏览器接口</li>
+</ol>
+<h3 id="NN的高可用配置"><a href="#NN的高可用配置" class="headerlink" title="NN的高可用配置"></a>NN的高可用配置</h3><h3 id="多个HDFS组合的配置方案"><a href="#多个HDFS组合的配置方案" class="headerlink" title="多个HDFS组合的配置方案"></a>多个HDFS组合的配置方案</h3><ol>
+<li>多个NameNode组成集群</li>
+<li>多个NameNode组成集群并且共享存储</li>
+</ol>
+<h3 id="权限配置"><a href="#权限配置" class="headerlink" title="权限配置"></a>权限配置</h3><h3 id="配额配置"><a href="#配额配置" class="headerlink" title="配额配置"></a>配额配置</h3><h3 id="API访问"><a href="#API访问" class="headerlink" title="API访问"></a>API访问</h3><h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><h3 id="NFS网关"><a href="#NFS网关" class="headerlink" title="NFS网关"></a>NFS网关</h3><p>挂载到文件目录上</p>
+<h3 id="滚动升级"><a href="#滚动升级" class="headerlink" title="滚动升级"></a>滚动升级</h3><p>不停业务的情况下升级HDFS</p>
+<h3 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h3><p>端到端的加密</p>
+<h2 id="NameNode"><a href="#NameNode" class="headerlink" title="NameNode"></a>NameNode</h2><h3 id="文件的管理"><a href="#文件的管理" class="headerlink" title="文件的管理"></a>文件的管理</h3><ul>
+<li>文件Block和DataNode的映射，并不会持久化，而是在系统启动时由DataNode进行汇报，对于不满足备份数的文件Block，NameNode再进行备份，例如某个DataNode宕机导致文件备份数量不足时</li>
+</ul>
+<h3 id="工作方式"><a href="#工作方式" class="headerlink" title="工作方式"></a>工作方式</h3><ul>
+<li>所有的操作在内存中完成</li>
+<li>数据的持久化和掉电问题</li>
+</ul>
+<h2 id="写数据流程"><a href="#写数据流程" class="headerlink" title="写数据流程"></a>写数据流程</h2><h3 id="写入过程"><a href="#写入过程" class="headerlink" title="写入过程"></a>写入过程</h3><h3 id="节点拓扑距离"><a href="#节点拓扑距离" class="headerlink" title="节点拓扑距离"></a>节点拓扑距离</h3><p>两个节点到达共同祖先的距离之和</p>
+<h3 id="机架感知策略"><a href="#机架感知策略" class="headerlink" title="机架感知策略"></a>机架感知策略</h3><p>当数据备份数据量为3时，使用两个机架，三个节点，其中的一个机架上的两个节点存放数据。</p>
+<p>机架的风险比节点要小很多，通过这样的机架感知策略，可以获得高可靠性和备份速度的平衡。 </p>
+<h3 id="Fsimage和Edits"><a href="#Fsimage和Edits" class="headerlink" title="Fsimage和Edits"></a>Fsimage和Edits</h3><p>Fsimage: NameNode的镜像文件</p>
+<p>Edits: 操作的日志</p>
+<p>可以使用命令查看Fsimage和edits的内容，分别包括文件元数据的组织详情和每个操作的详情</p>
+<h3 id="检查点时间设置"><a href="#检查点时间设置" class="headerlink" title="检查点时间设置"></a>检查点时间设置</h3><ul>
+<li>SecondaryNameNode每隔一小时执行一次</li>
+<li>每60s检查edits，如果达到100万次操作，则执行一次</li>
+</ul>
+<h2 id="DataNode"><a href="#DataNode" class="headerlink" title="DataNode"></a>DataNode</h2><h3 id="存放的内容"><a href="#存放的内容" class="headerlink" title="存放的内容"></a>存放的内容</h3><p>存放文件数据和校验信息</p>
+<h3 id="存储方式"><a href="#存储方式" class="headerlink" title="存储方式"></a>存储方式</h3><ul>
+<li><p>数据存放在硬盘上</p>
+</li>
+<li><p>一个文件会有一条元数据，所以小文件对效率有一定影响</p>
+</li>
+</ul>
+<h3 id="工作内容"><a href="#工作内容" class="headerlink" title="工作内容"></a>工作内容</h3><ul>
+<li><p>校验</p>
+<ul>
+<li>校验数据是否损坏</li>
+</ul>
+</li>
+<li><p>汇报</p>
+<ul>
+<li>向NameNode汇报数据信息</li>
+</ul>
+</li>
+<li><p>心跳</p>
+<ul>
+<li>运行中向NN保持心跳机制</li>
+</ul>
+</li>
+<li><p>读写数据</p>
+<ul>
+<li>客户端直接和DataNode建立关联，直接读写数据</li>
+<li>在读写前客户端会向NameNode查询Block和DataNode的映射关系</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据的校验"><a href="#数据的校验" class="headerlink" title="数据的校验"></a>数据的校验</h3><p>CRC校验</p>
+<h2 id="SecondaryNameNode"><a href="#SecondaryNameNode" class="headerlink" title="SecondaryNameNode"></a>SecondaryNameNode</h2><h3 id="内存持久化方案"><a href="#内存持久化方案" class="headerlink" title="内存持久化方案"></a>内存持久化方案</h3><ul>
+<li><p>日志机制</p>
+<ul>
+<li>日志越来越多，启动时根据日志恢复越来越慢</li>
+</ul>
+</li>
+<li><p>快照</p>
+<ul>
+<li>关机时间长</li>
+<li>出现故障时不能正常打快照</li>
+</ul>
+</li>
+</ul>
+<h3 id="SNN的内存持久化方案"><a href="#SNN的内存持久化方案" class="headerlink" title="SNN的内存持久化方案"></a>SNN的内存持久化方案</h3><p>合并NN的Fsimage和EditLog，可以配置下面的两个参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dfs.namenode.checkpoint.period, set to 1 hour by default, specifies the maximum delay between two consecutive checkpoints, and</span><br><span class="line"></span><br><span class="line">dfs.namenode.checkpoint.txns, set to 1 million by default, defines the number of uncheckpointed transactions on the NameNode which will force an urgent checkpoint, even if the checkpoint period has not been reached.</span><br></pre></td></tr></table></figure>
+
+<h2 id="存储类型和存储策略"><a href="#存储类型和存储策略" class="headerlink" title="存储类型和存储策略"></a>存储类型和存储策略</h2><p>HDFS支持的存储类型</p>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">Description</th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Archive</td>
+<td align="left">高压缩比的归档数据</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Disk</td>
+<td align="left">硬盘</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">SSD</td>
+<td align="left">固态硬盘</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Ram_Disk</td>
+<td align="left">内存</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>HDFS支持对不同的Block执行不同的存储策略</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">We have the following storage policies:</span><br><span class="line"></span><br><span class="line">1. Hot - for both storage and compute. The data that is popular and still being used for processing will stay in this policy. When a block is hot, all replicas are stored in DISK.</span><br><span class="line">2. Cold - only for storage with limited compute. The data that is no longer being used, or data that needs to be archived is moved from hot storage to cold storage. When a block is cold, all replicas are stored in ARCHIVE.</span><br><span class="line">3. Warm - partially hot and partially cold. When a block is warm, some of its replicas are stored in DISK and the remaining replicas are stored in ARCHIVE.</span><br><span class="line">4. All_SSD - for storing all replicas in SSD.</span><br><span class="line">5. One_SSD - for storing one of the replicas in SSD. The remaining replicas are stored in DISK.</span><br><span class="line">6. Lazy_Persist - for writing blocks with single replica in memory. The replica is first written in RAM_DISK and then it is lazily persisted in DISK.</span><br><span class="line">7. Provided - for storing data outside HDFS. See also HDFS Provided Storage.</span><br></pre></td></tr></table></figure>
+
+
+<table>
+<thead>
+<tr>
+<th align="left">Policy ID</th>
+<th align="left">Policy Name</th>
+<th align="left">Block Placement (n  replicas)</th>
+<th align="left">Fallback storages for creation</th>
+<th align="left">Fallback storages for replication</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">15</td>
+<td align="left">Lazy_Persist</td>
+<td align="left">RAM_DISK: 1, DISK: n-1</td>
+<td align="left">DISK</td>
+<td align="left">DISK</td>
+</tr>
+<tr>
+<td align="left">12</td>
+<td align="left">All_SSD</td>
+<td align="left">SSD: n</td>
+<td align="left">DISK</td>
+<td align="left">DISK</td>
+</tr>
+<tr>
+<td align="left">10</td>
+<td align="left">One_SSD</td>
+<td align="left">SSD: 1, DISK: n-1</td>
+<td align="left">SSD, DISK</td>
+<td align="left">SSD, DISK</td>
+</tr>
+<tr>
+<td align="left">7</td>
+<td align="left">Hot (default)</td>
+<td align="left">DISK: n</td>
+<td align="left"><none></td>
+<td align="left">ARCHIVE</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">Warm</td>
+<td align="left">DISK: 1, ARCHIVE: n-1</td>
+<td align="left">ARCHIVE, DISK</td>
+<td align="left">ARCHIVE, DISK</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">Cold</td>
+<td align="left">ARCHIVE: n</td>
+<td align="left"><none></td>
+<td align="left"><none></td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">Provided</td>
+<td align="left">PROVIDED: 1, DISK: n-1</td>
+<td align="left">PROVIDED, DISK</td>
+<td align="left">PROVIDED, DISK</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/Zhenxuyang/zhenxuyang.github.io/2022/09/03/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/HDFS/" data-id="cl9w6pg8j000qzxujau5ybvaf" data-title="HDFS" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag">大数据</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/Zhenxuyang/zhenxuyang.github.io/2022/09/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Spark/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Spark
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Zhenxuyang/zhenxuyang.github.io/2022/09/01/leetcode/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Leetcode</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/Hadoop/">Hadoop</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E9%83%A8%E7%BD%B2/">部署</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/Airflow%E5%AE%89%E8%A3%85/" rel="tag">Airflow安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/ClickHouse/" rel="tag">ClickHouse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/Flink/" rel="tag">Flink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/Flume/" rel="tag">Flume</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/HBase/" rel="tag">HBase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/Hive/" rel="tag">Hive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/IO/" rel="tag">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/Kafka/" rel="tag">Kafka</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/Leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" rel="tag">Leetcode每日一题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/LightGBM/" rel="tag">LightGBM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/Spark/" rel="tag">Spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/XGBoost/" rel="tag">XGBoost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag">大数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%B9%B6%E5%8F%91/" rel="tag">并发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%95%B0%E4%BB%93%E8%AE%BE%E8%AE%A1/" rel="tag">数仓设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%95%B0%E5%AD%97%E6%8E%92%E5%88%97/" rel="tag">数字排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%A6%82%E5%BF%B5/" rel="tag">概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" rel="tag">消息队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E8%BF%90%E7%BB%B4%E5%92%8C%E9%83%A8%E7%BD%B2/" rel="tag">运维和部署</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%9A%8F%E6%83%B3/" rel="tag">随想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Airflow%E5%AE%89%E8%A3%85/" style="font-size: 10px;">Airflow安装</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/ClickHouse/" style="font-size: 10px;">ClickHouse</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Flink/" style="font-size: 10px;">Flink</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Flume/" style="font-size: 10px;">Flume</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/HBase/" style="font-size: 10px;">HBase</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Hive/" style="font-size: 10px;">Hive</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/IO/" style="font-size: 10px;">IO</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Kafka/" style="font-size: 10px;">Kafka</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" style="font-size: 17.5px;">Leetcode每日一题</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/LightGBM/" style="font-size: 10px;">LightGBM</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Python/" style="font-size: 10px;">Python</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Spark/" style="font-size: 15px;">Spark</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/XGBoost/" style="font-size: 10px;">XGBoost</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">分布式系统</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 10px;">大数据</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 12.5px;">字符串</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 12.5px;">并发</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%95%B0%E4%BB%93%E8%AE%BE%E8%AE%A1/" style="font-size: 20px;">数仓设计</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%95%B0%E5%AD%97%E6%8E%92%E5%88%97/" style="font-size: 10px;">数字排列</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">概念</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" style="font-size: 10px;">消息队列</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E8%BF%90%E7%BB%B4%E5%92%8C%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">运维和部署</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%9A%8F%E6%83%B3/" style="font-size: 12.5px;">随想</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">项目</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Zhenxuyang/zhenxuyang.github.io/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Zhenxuyang/zhenxuyang.github.io/archives/2022/09/">September 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/Zhenxuyang/zhenxuyang.github.io/2022/10/31/Linux/%E6%A6%82%E5%BF%B5/">Linux概念</a>
+          </li>
+        
+          <li>
+            <a href="/Zhenxuyang/zhenxuyang.github.io/2022/10/31/Linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>
+          </li>
+        
+          <li>
+            <a href="/Zhenxuyang/zhenxuyang.github.io/2022/10/23/java/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a>
+          </li>
+        
+          <li>
+            <a href="/Zhenxuyang/zhenxuyang.github.io/2022/10/22/java/NIO/">NIO</a>
+          </li>
+        
+          <li>
+            <a href="/Zhenxuyang/zhenxuyang.github.io/2022/10/21/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Airflow/">Airflow</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 zxy<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/Zhenxuyang/zhenxuyang.github.io/" class="mobile-nav-link">Home</a>
+  
+    <a href="/Zhenxuyang/zhenxuyang.github.io/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/Zhenxuyang/zhenxuyang.github.io/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/Zhenxuyang/zhenxuyang.github.io/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/Zhenxuyang/zhenxuyang.github.io/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

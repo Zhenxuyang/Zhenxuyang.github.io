@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Spark | 坚持不下去的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="SparkResilient Distributed Dataset(RDD) 一种逻辑上的数据结构  底层处理的是分布式数据    转换算子   算子      map 对每个元素进行操作    filter 返回过滤后的元素    flagMap 对每个元素进行操作，并且能返回多个元素    mapPartitions(func) 对每个partition进行操作    mapPartitio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark">
+<meta property="og:url" content="https://github.com/Zhenxuyang/zhenxuyang.github.io/2022/09/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Spark/index.html">
+<meta property="og:site_name" content="坚持不下去的博客">
+<meta property="og:description" content="SparkResilient Distributed Dataset(RDD) 一种逻辑上的数据结构  底层处理的是分布式数据    转换算子   算子      map 对每个元素进行操作    filter 返回过滤后的元素    flagMap 对每个元素进行操作，并且能返回多个元素    mapPartitions(func) 对每个partition进行操作    mapPartitio">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-05T03:32:25.000Z">
+<meta property="article:modified_time" content="2022-09-28T04:23:29.472Z">
+<meta property="article:author" content="zxy">
+<meta property="article:tag" content="Spark">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/Zhenxuyang/zhenxuyang.github.io/atom.xml" title="坚持不下去的博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/Zhenxuyang/zhenxuyang.github.io/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/Zhenxuyang/zhenxuyang.github.io/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/Zhenxuyang/zhenxuyang.github.io/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/Zhenxuyang/zhenxuyang.github.io/" id="logo">坚持不下去的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/Zhenxuyang/zhenxuyang.github.io/" id="subtitle">再坚持一天</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/Zhenxuyang/zhenxuyang.github.io/">Home</a>
+        
+          <a class="main-nav-link" href="/Zhenxuyang/zhenxuyang.github.io/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/Zhenxuyang/zhenxuyang.github.io/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/Zhenxuyang/zhenxuyang.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-大数据/组件/Spark" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Zhenxuyang/zhenxuyang.github.io/2022/09/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Spark/" class="article-date">
+  <time class="dt-published" datetime="2022-09-05T03:32:25.000Z" itemprop="datePublished">2022-09-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Spark
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h1><h2 id="Resilient-Distributed-Dataset-RDD"><a href="#Resilient-Distributed-Dataset-RDD" class="headerlink" title="Resilient Distributed Dataset(RDD)"></a>Resilient Distributed Dataset(RDD)</h2><ol>
+<li><p>一种逻辑上的数据结构</p>
+</li>
+<li><p>底层处理的是分布式数据</p>
+</li>
+<li></li>
+</ol>
+<h2 id="转换算子"><a href="#转换算子" class="headerlink" title="转换算子"></a>转换算子</h2><table>
+<thead>
+<tr>
+<th align="left">算子</th>
+<th align="left"></th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">map</td>
+<td align="left">对每个元素进行操作</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">filter</td>
+<td align="left">返回过滤后的元素</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">flagMap</td>
+<td align="left">对每个元素进行操作，并且能返回多个元素</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">mapPartitions(func)</td>
+<td align="left">对每个partition进行操作</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">mapPartitionsWithIndex(func)</td>
+<td align="left">对每个partition进行操作，并且需要传入partition的索引</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">sample(withReplacement, fraction, seed)</td>
+<td align="left">从数据中抽样</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">union(otherDataset)</td>
+<td align="left">和另外一个数据集合并</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">intersection(otherDataset)</td>
+<td align="left">和另外一个数据集取交基</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">distinct([numPartitions])</td>
+<td align="left">去重</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">groupByKey([numPartitions])</td>
+<td align="left">对&lt;K, V&gt;的数据集按键值进行聚类</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">reduceByKey(func, [numPartitions])</td>
+<td align="left">When called on a dataset of (K, V) pairs, returns a dataset of (K, V) pairs where the values for each key are aggregated using the given reduce function func, which must be of type (V,V) &#x3D;&gt; V. Like in groupByKey, the number of reduce tasks is configurable through an optional second argument.</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">aggregateByKey(zeroValue)(seqOp, combOp, [numPartitions])</td>
+<td align="left">When called on a dataset of (K, V) pairs, returns a dataset of (K, U) pairs where the values for each key are aggregated using the given combine functions and a neutral “zero” value. Allows an aggregated value type that is different than the input value type, while avoiding unnecessary allocations. Like in groupByKey, the number of reduce tasks is configurable through an optional second argument.</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">sortByKey([ascending], [numPartitions])</td>
+<td align="left">When called on a dataset of (K, V) pairs where K implements Ordered, returns a dataset of (K, V) pairs sorted by keys in ascending or descending order, as specified in the boolean ascending argument.</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">join(otherDataset, [numPartitions])</td>
+<td align="left">When called on datasets of type (K, V) and (K, W), returns a dataset of (K, (V, W)) pairs with all pairs of elements for each key. Outer joins are supported through leftOuterJoin, rightOuterJoin, and fullOuterJoin.</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">cogroup(otherDataset, [numPartitions])</td>
+<td align="left">When called on datasets of type (K, V) and (K, W), returns a dataset of (K, (Iterable<V>, Iterable<W>)) tuples. This operation is also called groupWith.</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">cartesian(otherDataset)</td>
+<td align="left">When called on datasets of types T and U, returns a dataset of (T, U) pairs (all pairs of elements).</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">pipe(command, [envVars])</td>
+<td align="left">Pipe each partition of the RDD through a shell command, e.g. a Perl or bash script. RDD elements are written to the process’s stdin and lines output to its stdout are returned as an RDD of strings.</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">coalesce(numPartitions)</td>
+<td align="left">Decrease the number of partitions in the RDD to numPartitions. Useful for running operations more efficiently after filtering down a large dataset.</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">repartition(numPartitions)</td>
+<td align="left">Reshuffle the data in the RDD randomly to create either more or fewer partitions and balance it across them. This always shuffles all data over the network.</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">repartitionAndSortWithinPartitions(partitioner)</td>
+<td align="left">Repartition the RDD according to the given partitioner and, within each resulting partition, sort records by their keys. This is more efficient than calling repartition and then sorting within each partition because it can push the sorting down into the shuffle machinery.</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h2 id="3种API接口"><a href="#3种API接口" class="headerlink" title="3种API接口"></a>3种API接口</h2><h3 id="RDD"><a href="#RDD" class="headerlink" title="RDD"></a>RDD</h3><h3 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h3><h3 id="DataFrame"><a href="#DataFrame" class="headerlink" title="DataFrame"></a>DataFrame</h3><h2 id="Shuffle详解"><a href="#Shuffle详解" class="headerlink" title="Shuffle详解"></a>Shuffle详解</h2><h3 id="Write和Read两个过程"><a href="#Write和Read两个过程" class="headerlink" title="Write和Read两个过程"></a>Write和Read两个过程</h3><ol>
+<li>Write<ol>
+<li>对应Map的输出</li>
+</ol>
+</li>
+<li>Read<ol>
+<li>对应Reduce的输入</li>
+</ol>
+</li>
+</ol>
+<h3 id="Hash和Sorted两种类型"><a href="#Hash和Sorted两种类型" class="headerlink" title="Hash和Sorted两种类型"></a>Hash和Sorted两种类型</h3><ol>
+<li>Hash<ol>
+<li>根据Hash值来组织文件</li>
+<li>类型<ol>
+<li>普通Hash<ol>
+<li>Excuter中的每个任务输出N个文件</li>
+<li>每个文件对应一个Hash值的结果</li>
+<li>小文件特别多</li>
+</ol>
+</li>
+<li>聚合Hash<ol>
+<li>把普通hash过程中不同任务的输出文件按照Hash值聚合起来</li>
+<li>减少输出文件的个数</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Sorted <ol>
+<li>按照排序的方法把文件合并为一个输出文件</li>
+<li>提供索引文件标注某个Hash对应的数据的位置</li>
+<li>类型<ol>
+<li>普通sort<ol>
+<li>Excutor的输出进行排序，不同excutor的输出进行归并排序</li>
+<li>同时生成一个索引文件，给出不同hash值的offset和endset</li>
+</ol>
+</li>
+<li>bypass<ol>
+<li>使用hash值来获取输出</li>
+<li>最终的结果合并为1个文件</li>
+<li>索引文件</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000022848353">一文详解Spark Shuffle</a></p>
+<h2 id="内存管理机制"><a href="#内存管理机制" class="headerlink" title="内存管理机制"></a>内存管理机制</h2><ol>
+<li>堆内内存<ol>
+<li>Storage<ol>
+<li>存储操作的数据<ol>
+<li>RDD block</li>
+<li>broadcast类型</li>
+</ol>
+</li>
+<li>占用系统内存的60%</li>
+<li>分为3部分<ol>
+<li>可用的存储内存</li>
+<li>Unroll内存</li>
+<li>预留内存</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Excution<ol>
+<li>操作执行用的内存<ol>
+<li>shuffle操作用的内存</li>
+</ol>
+</li>
+<li>占用20%</li>
+</ol>
+</li>
+<li>Other<ol>
+<li>保存RDD元数据和用户定义的系统结构</li>
+<li>占用20%</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>堆外内存<ol>
+<li>执行内存和存储内存</li>
+<li>不需要预留空间避免OOM</li>
+<li>使用Unsafe方法管理</li>
+</ol>
+</li>
+<li>管理策略<ol>
+<li>静态管理策略</li>
+<li>动态管理策略<ol>
+<li>没有特意划出unroll空间</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="调优"><a href="#调优" class="headerlink" title="调优"></a>调优</h2><p>Spark的调优主要包括两部分</p>
+<ol>
+<li>数据序列化</li>
+<li>内存调优</li>
+</ol>
+<h3 id="数据序列化"><a href="#数据序列化" class="headerlink" title="数据序列化"></a>数据序列化</h3><p>好的序列化方法能够减少数据的传输</p>
+<ol>
+<li>Java原生序列化</li>
+<li>Kryo序列化</li>
+</ol>
+<h3 id="内存调优"><a href="#内存调优" class="headerlink" title="内存调优"></a>内存调优</h3><ol>
+<li>数据结构调优<ol>
+<li>选择合适的数据结构</li>
+</ol>
+</li>
+<li>序列化RDD</li>
+<li>垃圾回收调优<ol>
+<li>避免Full GC</li>
+<li>如果老年代内存占用过大，调整<code>spark.memory.fraction</code>来减少spark的缓存使用</li>
+<li>尝试使用G1垃圾收集器</li>
+<li>根据文件块大小来设置JVM</li>
+</ol>
+</li>
+</ol>
+<h3 id="其他的调优方法"><a href="#其他的调优方法" class="headerlink" title="其他的调优方法"></a>其他的调优方法</h3><ol>
+<li>设置合理的并行度</li>
+<li>增加目录列表的平行度<ol>
+<li>读取文件时平行读取</li>
+</ol>
+</li>
+<li>Reduce出现OOM<ol>
+<li>增加任务平行度，划分较小的任务</li>
+</ol>
+</li>
+<li>使用广播变量<ol>
+<li>复制到每个excuter中</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/Zhenxuyang/zhenxuyang.github.io/2022/09/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Spark/" data-id="cl9w6pg9c001izxuja9fq0e9w" data-title="Spark" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/Spark/" rel="tag">Spark</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/Zhenxuyang/zhenxuyang.github.io/2022/09/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Spark%20SQL/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Spark SQL
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Zhenxuyang/zhenxuyang.github.io/2022/09/03/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/HDFS/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">HDFS</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/Hadoop/">Hadoop</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E9%83%A8%E7%BD%B2/">部署</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/Airflow%E5%AE%89%E8%A3%85/" rel="tag">Airflow安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/ClickHouse/" rel="tag">ClickHouse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/Flink/" rel="tag">Flink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/Flume/" rel="tag">Flume</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/HBase/" rel="tag">HBase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/Hive/" rel="tag">Hive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/IO/" rel="tag">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/Kafka/" rel="tag">Kafka</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/Leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" rel="tag">Leetcode每日一题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/LightGBM/" rel="tag">LightGBM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/Spark/" rel="tag">Spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/XGBoost/" rel="tag">XGBoost</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag">大数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%B9%B6%E5%8F%91/" rel="tag">并发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%95%B0%E4%BB%93%E8%AE%BE%E8%AE%A1/" rel="tag">数仓设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%95%B0%E5%AD%97%E6%8E%92%E5%88%97/" rel="tag">数字排列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%A6%82%E5%BF%B5/" rel="tag">概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" rel="tag">消息队列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E8%BF%90%E7%BB%B4%E5%92%8C%E9%83%A8%E7%BD%B2/" rel="tag">运维和部署</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%9A%8F%E6%83%B3/" rel="tag">随想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Airflow%E5%AE%89%E8%A3%85/" style="font-size: 10px;">Airflow安装</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/ClickHouse/" style="font-size: 10px;">ClickHouse</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Flink/" style="font-size: 10px;">Flink</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Flume/" style="font-size: 10px;">Flume</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/HBase/" style="font-size: 10px;">HBase</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Hive/" style="font-size: 10px;">Hive</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/IO/" style="font-size: 10px;">IO</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Kafka/" style="font-size: 10px;">Kafka</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" style="font-size: 17.5px;">Leetcode每日一题</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/LightGBM/" style="font-size: 10px;">LightGBM</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Python/" style="font-size: 10px;">Python</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Spark/" style="font-size: 15px;">Spark</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/XGBoost/" style="font-size: 10px;">XGBoost</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">分布式系统</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 10px;">大数据</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 12.5px;">字符串</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 12.5px;">并发</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%95%B0%E4%BB%93%E8%AE%BE%E8%AE%A1/" style="font-size: 20px;">数仓设计</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%95%B0%E5%AD%97%E6%8E%92%E5%88%97/" style="font-size: 10px;">数字排列</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">概念</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" style="font-size: 10px;">消息队列</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E8%BF%90%E7%BB%B4%E5%92%8C%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">运维和部署</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%9A%8F%E6%83%B3/" style="font-size: 12.5px;">随想</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">项目</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Zhenxuyang/zhenxuyang.github.io/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Zhenxuyang/zhenxuyang.github.io/archives/2022/09/">September 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/Zhenxuyang/zhenxuyang.github.io/2022/10/31/Linux/%E6%A6%82%E5%BF%B5/">Linux概念</a>
+          </li>
+        
+          <li>
+            <a href="/Zhenxuyang/zhenxuyang.github.io/2022/10/31/Linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>
+          </li>
+        
+          <li>
+            <a href="/Zhenxuyang/zhenxuyang.github.io/2022/10/23/java/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a>
+          </li>
+        
+          <li>
+            <a href="/Zhenxuyang/zhenxuyang.github.io/2022/10/22/java/NIO/">NIO</a>
+          </li>
+        
+          <li>
+            <a href="/Zhenxuyang/zhenxuyang.github.io/2022/10/21/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Airflow/">Airflow</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 zxy<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/Zhenxuyang/zhenxuyang.github.io/" class="mobile-nav-link">Home</a>
+  
+    <a href="/Zhenxuyang/zhenxuyang.github.io/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/Zhenxuyang/zhenxuyang.github.io/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/Zhenxuyang/zhenxuyang.github.io/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/Zhenxuyang/zhenxuyang.github.io/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
