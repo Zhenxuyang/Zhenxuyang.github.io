@@ -75,6 +75,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-大数据/设计方法/缓慢变化维" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/Zhenxuyang/zhenxuyang.github.io/2022/09/13/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95/%E7%BC%93%E6%85%A2%E5%8F%98%E5%8C%96%E7%BB%B4/" class="article-date">
+  <time class="dt-published" datetime="2022-09-13T02:57:24.000Z" itemprop="datePublished">2022-09-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/Zhenxuyang/zhenxuyang.github.io/2022/09/13/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95/%E7%BC%93%E6%85%A2%E5%8F%98%E5%8C%96%E7%BB%B4/">缓慢变化维</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="缓慢变化维"><a href="#缓慢变化维" class="headerlink" title="缓慢变化维"></a>缓慢变化维</h1><h2 id="处理方法"><a href="#处理方法" class="headerlink" title="处理方法"></a>处理方法</h2><ol>
+<li>覆盖旧值</li>
+<li>增加新行</li>
+<li>增加新列</li>
+<li>快照维度</li>
+<li>拉链法</li>
+<li>微型维度</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/Zhenxuyang/zhenxuyang.github.io/2022/09/13/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95/%E7%BC%93%E6%85%A2%E5%8F%98%E5%8C%96%E7%BB%B4/" data-id="cl9w6pg9r0024zxuj2i2z3a62" data-title="缓慢变化维" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%95%B0%E4%BB%93%E8%AE%BE%E8%AE%A1/" rel="tag">数仓设计</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-大数据/组件/Flink" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/Zhenxuyang/zhenxuyang.github.io/2022/09/11/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Flink/" class="article-date">
@@ -256,6 +308,17 @@
 <li>Session windows</li>
 <li>Global window</li>
 </ol>
+<h4 id="窗口的处理函数"><a href="#窗口的处理函数" class="headerlink" title="窗口的处理函数"></a>窗口的处理函数</h4><ol>
+<li>增量聚合函数<ol>
+<li>ReduceFunction</li>
+<li>AggretateFunction</li>
+</ol>
+</li>
+<li>全量窗口函数<ol>
+<li>ProcessWindowFunction</li>
+</ol>
+</li>
+</ol>
 <h4 id="窗口的组件"><a href="#窗口的组件" class="headerlink" title="窗口的组件"></a>窗口的组件</h4><ol>
 <li>Assigner - 分类器</li>
 <li>Trigger - 触发器</li>
@@ -388,7 +451,10 @@
 <li>flink的最大并行度就是TaskManager中的slot的数量</li>
 <li>支持槽共享</li>
 </ol>
-<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h3 id="DataStream"><a href="#DataStream" class="headerlink" title="DataStream"></a>DataStream</h3><h3 id="Table"><a href="#Table" class="headerlink" title="Table"></a>Table</h3><h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.15//docs/try-flink/local_installation/">官方文档</a></p>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h3 id="DataSource"><a href="#DataSource" class="headerlink" title="DataSource"></a>DataSource</h3><ol>
+<li>定义一个Datasource</li>
+</ol>
+<h3 id="DataStream"><a href="#DataStream" class="headerlink" title="DataStream"></a>DataStream</h3><h3 id="Table"><a href="#Table" class="headerlink" title="Table"></a>Table</h3><h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.15//docs/try-flink/local_installation/">官方文档</a></p>
 <ol>
 <li>修改<code>rest.bind-address: 0.0.0.0</code>允许从外网访问管理页面</li>
 </ol>
@@ -1405,114 +1471,6 @@
 
 
   
-    <article id="post-leetcode/leetcode每日一题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/Zhenxuyang/zhenxuyang.github.io/2022/09/01/leetcode/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" class="article-date">
-  <time class="dt-published" datetime="2022-09-01T12:44:51.000Z" itemprop="datePublished">2022-09-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/Zhenxuyang/zhenxuyang.github.io/2022/09/01/leetcode/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">Leetcode</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><table>
-<thead>
-<tr>
-<th align="left">题目</th>
-<th align="left">类别</th>
-<th align="left">链接</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">1475. 商品折扣后的最终价格</td>
-<td align="left">单调栈</td>
-<td align="left"><a href="#1475-%E5%95%86%E5%93%81%E6%8A%98%E6%89%A3%E5%90%8E%E7%9A%84%E6%9C%80%E7%BB%88%E4%BB%B7%E6%A0%BC">链接</a></td>
-</tr>
-<tr>
-<td align="left">50. Pow(x, n)</td>
-<td align="left">快速幂</td>
-<td align="left"><a href="#50-powx-n">链接</a></td>
-</tr>
-<tr>
-<td align="left">687. 最长同值路径</td>
-<td align="left">二叉树、DFS</td>
-<td align="left"><a href="#687-%E6%9C%80%E9%95%BF%E5%90%8C%E5%80%BC%E8%B7%AF%E5%BE%84">链接</a></td>
-</tr>
-<tr>
-<td align="left">646. 最长数对链</td>
-<td align="left">动态规划</td>
-<td align="left"><a href="#646-%E6%9C%80%E9%95%BF%E6%95%B0%E5%AF%B9%E9%93%BE">链接</a></td>
-</tr>
-<tr>
-<td align="left">1582. 二进制矩阵中的特殊位置</td>
-<td align="left">模拟</td>
-<td align="left"><a href="#1582-%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E4%BD%8D%E7%BD%AE">链接</a></td>
-</tr>
-<tr>
-<td align="left">652. 寻找重复的子树</td>
-<td align="left">二叉树</td>
-<td align="left"><a href="#652-%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AD%90%E6%A0%91">链接</a></td>
-</tr>
-<tr>
-<td align="left">828. 统计子串中的唯一字符</td>
-<td align="left">字符串、找规律</td>
-<td align="left"><a href="#828-%E7%BB%9F%E8%AE%A1%E5%AD%90%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%94%AF%E4%B8%80%E5%AD%97%E7%AC%A6">链接</a></td>
-</tr>
-</tbody></table>
-<h2 id="1475-商品折扣后的最终价格"><a href="#1475-商品折扣后的最终价格" class="headerlink" title="1475. 商品折扣后的最终价格"></a>1475. 商品折扣后的最终价格</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/final-prices-with-a-special-discount-in-a-shop/">https://leetcode.cn/problems/final-prices-with-a-special-discount-in-a-shop/</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def finalPrices(self, prices: List[int]) -&gt; List[int]:</span><br><span class="line">        # 暴力</span><br><span class="line">        # n = len(prices)</span><br><span class="line">        # res = []</span><br><span class="line">        # for i in range(n):</span><br><span class="line">        #     flag = 0</span><br><span class="line">        #     for j in range(i+1, n):</span><br><span class="line">        #        if prices[j] &lt;= prices[i]:</span><br><span class="line">        #            res.append(prices[i] - prices[j])</span><br><span class="line">        #            flag = 1</span><br><span class="line">        #            break</span><br><span class="line">        #     if flag == 0:</span><br><span class="line">        #         res.append(prices[i])</span><br><span class="line">        # return res</span><br><span class="line"></span><br><span class="line">        # 单调栈</span><br><span class="line">        stack = deque()</span><br><span class="line">        n = len(prices)</span><br><span class="line">        res = []</span><br><span class="line">        for i in range(n-1, -1, -1):</span><br><span class="line">            price = prices[i]</span><br><span class="line">            while stack and stack[-1] &gt; price:</span><br><span class="line">                stack.pop()</span><br><span class="line">            if not stack:</span><br><span class="line">                res.append(price)</span><br><span class="line">            else:</span><br><span class="line">                res.append(price-stack[-1])</span><br><span class="line">            stack.append(price)</span><br><span class="line">        return res[::-1]</span><br></pre></td></tr></table></figure>
-
-<h2 id="50-Pow-x-n"><a href="#50-Pow-x-n" class="headerlink" title="50. Pow(x, n)"></a>50. Pow(x, n)</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/powx-n/">https://leetcode.cn/problems/powx-n/</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def myPow(self, x: float, n: int) -&gt; float:</span><br><span class="line">        def multi(x, n):</span><br><span class="line">            y = x</span><br><span class="line">            res = 1</span><br><span class="line">            while n:</span><br><span class="line">                if n%2 == 1:</span><br><span class="line">                    res *= y</span><br><span class="line">                y *= y</span><br><span class="line">                n = n // 2</span><br><span class="line">            return res</span><br><span class="line">        return multi(x, n) if n &gt;=0 else 1.0 / multi(x, -n)</span><br></pre></td></tr></table></figure>
-
-<h2 id="687-最长同值路径"><a href="#687-最长同值路径" class="headerlink" title="687. 最长同值路径"></a>687. 最长同值路径</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-univalue-path/">https://leetcode.cn/problems/longest-univalue-path/</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"># Definition for a binary tree node.</span><br><span class="line"># class TreeNode:</span><br><span class="line">#     def __init__(self, val=0, left=None, right=None):</span><br><span class="line">#         self.val = val</span><br><span class="line">#         self.left = left</span><br><span class="line">#         self.right = right</span><br><span class="line">class Solution:</span><br><span class="line">    def longestUnivaluePath(self, root: Optional[TreeNode]) -&gt; int:</span><br><span class="line">        res = -1</span><br><span class="line">        if not root:</span><br><span class="line">            return 0</span><br><span class="line">        def find(root):</span><br><span class="line">            if not root:</span><br><span class="line">                return 0</span><br><span class="line">            else:</span><br><span class="line">                left_dis, right_dis = 0, 0</span><br><span class="line">                if root.left:</span><br><span class="line">                    left_dis = find(root.left)</span><br><span class="line">                    if root.left.val != root.val:</span><br><span class="line">                        left_dis = 0</span><br><span class="line">                if root.right:</span><br><span class="line">                    right_dis = find(root.right) </span><br><span class="line">                    if root.right.val != root.val:</span><br><span class="line">                        right_dis = 0</span><br><span class="line">                nonlocal res</span><br><span class="line">                res = max(res, left_dis + right_dis + 1)</span><br><span class="line">                return max(left_dis + 1, right_dis + 1)</span><br><span class="line">        find(root)</span><br><span class="line">        return res - 1</span><br></pre></td></tr></table></figure>
-
-<h3 id="646-最长数对链"><a href="#646-最长数对链" class="headerlink" title="646. 最长数对链"></a>646. 最长数对链</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-length-of-pair-chain/">https://leetcode.cn/problems/maximum-length-of-pair-chain/</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def findLongestChain(self, pairs: List[List[int]]) -&gt; int:</span><br><span class="line">        pairs.sort(key=lambda x: x[0])</span><br><span class="line">        n = len(pairs)</span><br><span class="line">        res = 1</span><br><span class="line">        dp = [1 for i in range(n)]</span><br><span class="line">        for i in range(n):</span><br><span class="line">            for j in range(i):</span><br><span class="line">                if pairs[i][0] &gt; pairs[j][1]:</span><br><span class="line">                    dp[i] = dp[j] + 1</span><br><span class="line">        return max(dp)</span><br></pre></td></tr></table></figure>
-
-<h3 id="1582-二进制矩阵中的特殊位置"><a href="#1582-二进制矩阵中的特殊位置" class="headerlink" title="1582. 二进制矩阵中的特殊位置"></a>1582. 二进制矩阵中的特殊位置</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/special-positions-in-a-binary-matrix/">https://leetcode.cn/problems/special-positions-in-a-binary-matrix/</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def numSpecial(self, mat: List[List[int]]) -&gt; int:</span><br><span class="line">        m = len(mat)</span><br><span class="line">        n = len(mat[0])</span><br><span class="line">        res = 0</span><br><span class="line">        rows_sum = [sum(row) for row in mat]</span><br><span class="line">        cols_sum = [sum(col) for col in zip(*mat)]</span><br><span class="line">        for i in range(m):</span><br><span class="line">            for j in range(n):</span><br><span class="line">                if mat[i][j] == 1 and rows_sum[i] == 1 and cols_sum[j] == 1:</span><br><span class="line">                    res += 1</span><br><span class="line">        return res</span><br></pre></td></tr></table></figure>
-
-<h2 id="652-寻找重复的子树"><a href="#652-寻找重复的子树" class="headerlink" title="652. 寻找重复的子树"></a>652. 寻找重复的子树</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-duplicate-subtrees/">https://leetcode.cn/problems/find-duplicate-subtrees/</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"># Definition for a binary tree node.</span><br><span class="line"># class TreeNode:</span><br><span class="line">#     def __init__(self, val=0, left=None, right=None):</span><br><span class="line">#         self.val = val</span><br><span class="line">#         self.left = left</span><br><span class="line">#         self.right = right</span><br><span class="line">class Solution:</span><br><span class="line">    def findDuplicateSubtrees(self, root: Optional[TreeNode]) -&gt; List[Optional[TreeNode]]:</span><br><span class="line">        # 暴力法，也没有解决重复结果的问题</span><br><span class="line">        # def isSameTree(tree1, tree2):</span><br><span class="line">        #     if tree1 and tree2: </span><br><span class="line">        #         if tree1.val != tree2.val:</span><br><span class="line">        #             return False</span><br><span class="line">        #         else:</span><br><span class="line">        #             return isSameTree(tree1.left, tree2.left) and isSameTree(tree1.right, tree2.right)</span><br><span class="line">        #     elif not tree1 and not tree2:</span><br><span class="line">        #         return True</span><br><span class="line">        #     else:</span><br><span class="line">        #         return False </span><br><span class="line">        # nodes = []</span><br><span class="line">        # queue = collections.deque()</span><br><span class="line">        # queue.append(root)</span><br><span class="line">        # while queue:</span><br><span class="line">        #     node = queue.popleft()</span><br><span class="line">        #     if node.left:</span><br><span class="line">        #         queue.append(node.left)</span><br><span class="line">        #     if node.right:</span><br><span class="line">        #         queue.append(node.right)</span><br><span class="line">        #     nodes.append(node)</span><br><span class="line">        # n = len(nodes)</span><br><span class="line">        # res = []</span><br><span class="line">        # for i in range(n):</span><br><span class="line">        #     for j in range(i+1, n):</span><br><span class="line">        #         if isSameTree(nodes[i], nodes[j]):</span><br><span class="line">        #             res.append(nodes[j])</span><br><span class="line">        # return res</span><br><span class="line">        # 二叉树的序列化</span><br><span class="line">        def dfs(node):</span><br><span class="line">            if not node:</span><br><span class="line">                return &quot;&quot;</span><br><span class="line">            serial = &quot;&quot;.join([&quot;(&quot;, dfs(node.left), &quot;)&quot;, &quot;(&quot;, str(node.val), &quot;)&quot;, &quot;(&quot;, dfs(node.right), &quot;)&quot;])</span><br><span class="line">            if serial in map_:</span><br><span class="line">                res.add(map_[serial])</span><br><span class="line">            else:</span><br><span class="line">                map_[serial] = node</span><br><span class="line">            return serial</span><br><span class="line">        res = set()</span><br><span class="line">        map_ = dict()</span><br><span class="line">        dfs(root)</span><br><span class="line">        return list(res)</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="828-统计子串中的唯一字符"><a href="#828-统计子串中的唯一字符" class="headerlink" title="828. 统计子串中的唯一字符"></a>828. 统计子串中的唯一字符</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-unique-characters-of-all-substrings-of-a-given-string/submissions/">https://leetcode.cn/problems/count-unique-characters-of-all-substrings-of-a-given-string/submissions/</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def uniqueLetterString(self, s: str) -&gt; int:</span><br><span class="line">        dict_ = collections.defaultdict(list)</span><br><span class="line">        for i, v in enumerate(s):</span><br><span class="line">            dict_[v].append(i)</span><br><span class="line">        res = 0</span><br><span class="line">        for value in dict_.values():</span><br><span class="line">            value = [-1] + value + [len(s)]</span><br><span class="line">            for n in range(1, len(value)-1):</span><br><span class="line">                res += (value[n] - value[n-1]) * (value[n+1]-value[n]) </span><br><span class="line">        return res</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/Zhenxuyang/zhenxuyang.github.io/2022/09/01/leetcode/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" data-id="cl9w6pg810004zxuj12vtgytu" data-title="Leetcode" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Zhenxuyang/zhenxuyang.github.io/tags/Leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" rel="tag">Leetcode每日一题</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -1548,7 +1506,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Airflow%E5%AE%89%E8%A3%85/" style="font-size: 10px;">Airflow安装</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/ClickHouse/" style="font-size: 10px;">ClickHouse</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Flink/" style="font-size: 10px;">Flink</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Flume/" style="font-size: 10px;">Flume</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/HBase/" style="font-size: 10px;">HBase</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Hive/" style="font-size: 10px;">Hive</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/IO/" style="font-size: 10px;">IO</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Kafka/" style="font-size: 10px;">Kafka</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" style="font-size: 17.5px;">Leetcode每日一题</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/LightGBM/" style="font-size: 10px;">LightGBM</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Python/" style="font-size: 10px;">Python</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Spark/" style="font-size: 15px;">Spark</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/XGBoost/" style="font-size: 10px;">XGBoost</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">分布式系统</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 10px;">大数据</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 12.5px;">字符串</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 12.5px;">并发</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%95%B0%E4%BB%93%E8%AE%BE%E8%AE%A1/" style="font-size: 20px;">数仓设计</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%95%B0%E5%AD%97%E6%8E%92%E5%88%97/" style="font-size: 10px;">数字排列</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">概念</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" style="font-size: 10px;">消息队列</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E8%BF%90%E7%BB%B4%E5%92%8C%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">运维和部署</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%9A%8F%E6%83%B3/" style="font-size: 12.5px;">随想</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">项目</a>
+      <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Airflow%E5%AE%89%E8%A3%85/" style="font-size: 10px;">Airflow安装</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/ClickHouse/" style="font-size: 10px;">ClickHouse</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Flink/" style="font-size: 12.5px;">Flink</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Flume/" style="font-size: 10px;">Flume</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/HBase/" style="font-size: 10px;">HBase</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Hive/" style="font-size: 10px;">Hive</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/IO/" style="font-size: 10px;">IO</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Kafka/" style="font-size: 10px;">Kafka</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" style="font-size: 17.5px;">Leetcode每日一题</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/LightGBM/" style="font-size: 10px;">LightGBM</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Python/" style="font-size: 10px;">Python</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Spark/" style="font-size: 15px;">Spark</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/XGBoost/" style="font-size: 10px;">XGBoost</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">分布式系统</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 10px;">大数据</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 12.5px;">字符串</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 12.5px;">并发</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%95%B0%E4%BB%93%E8%AE%BE%E8%AE%A1/" style="font-size: 20px;">数仓设计</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%95%B0%E5%AD%97%E6%8E%92%E5%88%97/" style="font-size: 10px;">数字排列</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">概念</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" style="font-size: 10px;">消息队列</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E8%BF%90%E7%BB%B4%E5%92%8C%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">运维和部署</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%9A%8F%E6%83%B3/" style="font-size: 12.5px;">随想</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">项目</a>
     </div>
   </div>
 
@@ -1570,6 +1528,10 @@
       <ul>
         
           <li>
+            <a href="/Zhenxuyang/zhenxuyang.github.io/2022/10/31/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Flink/Flink%20API/">Flink API</a>
+          </li>
+        
+          <li>
             <a href="/Zhenxuyang/zhenxuyang.github.io/2022/10/31/Linux/%E6%A6%82%E5%BF%B5/">Linux概念</a>
           </li>
         
@@ -1583,10 +1545,6 @@
         
           <li>
             <a href="/Zhenxuyang/zhenxuyang.github.io/2022/10/22/java/NIO/">NIO</a>
-          </li>
-        
-          <li>
-            <a href="/Zhenxuyang/zhenxuyang.github.io/2022/10/21/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Airflow/">Airflow</a>
           </li>
         
       </ul>
