@@ -9,12 +9,12 @@
   <meta name="description" content="[TOC] Flinkevent-drivenapplication 欺诈检测 异常检测 规则告警  批处理和流处理的区别 批处理一批一批地处理数据，比如当天处理前一天的数据 流处理实时处理数据  流处理的优势 不需要人为地定义一次处理的“边界” 具有较好的容错机制  Flink的数据处理方式批处理和流处理都支持  提供SQL接口执行批和流查询 无论是在静态的数据集上还是实时的事件流上都可以得到相">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flink">
-<meta property="og:url" content="https://github.com/Zhenxuyang/zhenxuyang.github.io/2022/09/11/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Flink/index.html">
+<meta property="og:url" content="https://github.com/Zhenxuyang/zhenxuyang.github.io/2022/09/11/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Flink/Flink/index.html">
 <meta property="og:site_name" content="坚持不下去的博客">
 <meta property="og:description" content="[TOC] Flinkevent-drivenapplication 欺诈检测 异常检测 规则告警  批处理和流处理的区别 批处理一批一批地处理数据，比如当天处理前一天的数据 流处理实时处理数据  流处理的优势 不需要人为地定义一次处理的“边界” 具有较好的容错机制  Flink的数据处理方式批处理和流处理都支持  提供SQL接口执行批和流查询 无论是在静态的数据集上还是实时的事件流上都可以得到相">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-11T03:09:03.000Z">
-<meta property="article:modified_time" content="2022-10-31T15:11:45.285Z">
+<meta property="article:modified_time" content="2022-11-02T09:30:28.113Z">
 <meta property="article:author" content="zxy">
 <meta property="article:tag" content="Flink">
 <meta name="twitter:card" content="summary">
@@ -78,9 +78,9 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-大数据/组件/Flink" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-大数据/组件/Flink/Flink" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/Zhenxuyang/zhenxuyang.github.io/2022/09/11/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Flink/" class="article-date">
+    <a href="/Zhenxuyang/zhenxuyang.github.io/2022/09/11/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Flink/Flink/" class="article-date">
   <time class="dt-published" datetime="2022-09-11T03:09:03.000Z" itemprop="datePublished">2022-09-11</time>
 </a>
     
@@ -272,7 +272,10 @@
 </ol>
 <h4 id="窗口的组件"><a href="#窗口的组件" class="headerlink" title="窗口的组件"></a>窗口的组件</h4><ol>
 <li>Assigner - 分类器</li>
-<li>Trigger - 触发器</li>
+<li>Trigger - 触发器<ol>
+<li>窗口发生某种行为时触发</li>
+</ol>
+</li>
 <li>Function - 处理函数</li>
 <li>Evivtor - 清理器</li>
 </ol>
@@ -292,6 +295,11 @@
 <li>只支持event time</li>
 </ul>
 <h3 id="广播变量"><a href="#广播变量" class="headerlink" title="广播变量"></a>广播变量</h3><h3 id="状态存储"><a href="#状态存储" class="headerlink" title="状态存储"></a>状态存储</h3><p><a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-release-1.15/docs/dev/datastream/fault-tolerance/state/">参考资料</a></p>
+<h4 id="状态后端"><a href="#状态后端" class="headerlink" title="状态后端"></a>状态后端</h4><ol>
+<li>MemoryStateBackend</li>
+<li>FsStateBackend</li>
+<li>RocksDBStateBackend</li>
+</ol>
 <h4 id="状态的类型"><a href="#状态的类型" class="headerlink" title="状态的类型"></a>状态的类型</h4><ol>
 <li>ValueState<ul>
 <li>存储一个可以被更新和获取的值</li>
@@ -419,7 +427,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/Zhenxuyang/zhenxuyang.github.io/2022/09/11/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Flink/" data-id="cl9w6pg8c000hzxujdwv59tc0" data-title="Flink" class="article-share-link">Share</a>
+      <a data-url="https://github.com/Zhenxuyang/zhenxuyang.github.io/2022/09/11/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Flink/Flink/" data-id="cla18yc5q0004qqujhiqa40wp" data-title="Flink" class="article-share-link">Share</a>
       
       
       
@@ -460,7 +468,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/Hadoop/">Hadoop</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E9%83%A8%E7%BD%B2/">部署</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/Hadoop/">Hadoop</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E8%A1%8C%E4%B8%9A%E5%89%8D%E6%B2%BF/">行业前沿</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/Zhenxuyang/zhenxuyang.github.io/categories/%E9%83%A8%E7%BD%B2/">部署</a></li></ul>
     </div>
   </div>
 
@@ -480,7 +488,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Airflow%E5%AE%89%E8%A3%85/" style="font-size: 10px;">Airflow安装</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/ClickHouse/" style="font-size: 10px;">ClickHouse</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Flink/" style="font-size: 12.5px;">Flink</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Flume/" style="font-size: 10px;">Flume</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/HBase/" style="font-size: 10px;">HBase</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Hive/" style="font-size: 10px;">Hive</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/IO/" style="font-size: 10px;">IO</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Kafka/" style="font-size: 10px;">Kafka</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" style="font-size: 17.5px;">Leetcode每日一题</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/LightGBM/" style="font-size: 10px;">LightGBM</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Python/" style="font-size: 10px;">Python</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Spark/" style="font-size: 15px;">Spark</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/XGBoost/" style="font-size: 10px;">XGBoost</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">分布式系统</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 10px;">大数据</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 12.5px;">字符串</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 12.5px;">并发</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%95%B0%E4%BB%93%E8%AE%BE%E8%AE%A1/" style="font-size: 20px;">数仓设计</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%95%B0%E5%AD%97%E6%8E%92%E5%88%97/" style="font-size: 10px;">数字排列</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">概念</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" style="font-size: 10px;">消息队列</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E8%BF%90%E7%BB%B4%E5%92%8C%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">运维和部署</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%9A%8F%E6%83%B3/" style="font-size: 12.5px;">随想</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">项目</a>
+      <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Airflow%E5%AE%89%E8%A3%85/" style="font-size: 10px;">Airflow安装</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/ClickHouse/" style="font-size: 12.5px;">ClickHouse</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Flink/" style="font-size: 15px;">Flink</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Flume/" style="font-size: 10px;">Flume</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/HBase/" style="font-size: 10px;">HBase</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Hive/" style="font-size: 10px;">Hive</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/IO/" style="font-size: 10px;">IO</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Kafka/" style="font-size: 10px;">Kafka</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" style="font-size: 17.5px;">Leetcode每日一题</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/LightGBM/" style="font-size: 10px;">LightGBM</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Python/" style="font-size: 10px;">Python</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/Spark/" style="font-size: 15px;">Spark</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/XGBoost/" style="font-size: 10px;">XGBoost</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">分布式系统</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 12.5px;">大数据</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 12.5px;">字符串</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 12.5px;">并发</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%95%B0%E4%BB%93%E8%AE%BE%E8%AE%A1/" style="font-size: 20px;">数仓设计</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%95%B0%E5%AD%97%E6%8E%92%E5%88%97/" style="font-size: 10px;">数字排列</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">概念</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" style="font-size: 10px;">消息队列</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E8%BF%90%E7%BB%B4%E5%92%8C%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">运维和部署</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%9A%8F%E6%83%B3/" style="font-size: 12.5px;">随想</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a> <a href="/Zhenxuyang/zhenxuyang.github.io/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">项目</a>
     </div>
   </div>
 
@@ -489,7 +497,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Zhenxuyang/zhenxuyang.github.io/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Zhenxuyang/zhenxuyang.github.io/archives/2022/09/">September 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Zhenxuyang/zhenxuyang.github.io/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Zhenxuyang/zhenxuyang.github.io/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Zhenxuyang/zhenxuyang.github.io/archives/2022/09/">September 2022</a></li></ul>
     </div>
   </div>
 
@@ -502,23 +510,23 @@
       <ul>
         
           <li>
+            <a href="/Zhenxuyang/zhenxuyang.github.io/2022/11/03/%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99/%E7%BE%8E%E5%9B%A2%E6%95%B0%E6%8D%AE%E5%AE%9E%E8%B7%B5/">美团数据实践</a>
+          </li>
+        
+          <li>
+            <a href="/Zhenxuyang/zhenxuyang.github.io/2022/11/02/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/ClickHouse/ClickHouse%E6%A6%82%E5%BF%B5/">ClickHouse概念</a>
+          </li>
+        
+          <li>
+            <a href="/Zhenxuyang/zhenxuyang.github.io/2022/11/02/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Flink/Flink%E6%A6%82%E5%BF%B5/">Flink概念</a>
+          </li>
+        
+          <li>
             <a href="/Zhenxuyang/zhenxuyang.github.io/2022/10/31/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Flink/Flink%20API/">Flink API</a>
           </li>
         
           <li>
             <a href="/Zhenxuyang/zhenxuyang.github.io/2022/10/31/Linux/%E6%A6%82%E5%BF%B5/">Linux概念</a>
-          </li>
-        
-          <li>
-            <a href="/Zhenxuyang/zhenxuyang.github.io/2022/10/31/Linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>
-          </li>
-        
-          <li>
-            <a href="/Zhenxuyang/zhenxuyang.github.io/2022/10/23/java/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化</a>
-          </li>
-        
-          <li>
-            <a href="/Zhenxuyang/zhenxuyang.github.io/2022/10/22/java/NIO/">NIO</a>
           </li>
         
       </ul>
