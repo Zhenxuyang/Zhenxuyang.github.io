@@ -6,15 +6,15 @@
   
   <title>Flink概念 | 坚持不下去的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="[TOC] Flink概念可查询式状态服务Flink算子的状态可供外部系统查询 应用的一次性保障端到端的一次性保障分为上游数据系统、Flink和下游数据系统三部分 上游数据系统支持数据重放  对于文件系统，检查点保存文件读取的位置 对于Kafka，检查点保存offset  Flink 数据源 对于文件系统，检查点保存文件读取的位置 对于Kafka，检查点保存offset 保存到状态后端   算子">
+  <meta name="description" content="[TOC] Flink概念状态状态类型 KeyedState OperatorState Broadcast State  使用Operator State可查询式状态服务Flink算子的状态可供外部系统查询 应用的一次性保障端到端的一次性保障分为上游数据系统、Flink和下游数据系统三部分 上游数据系统支持数据重放  对于文件系统，检查点保存文件读取的位置 对于Kafka，检查点保存offset">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flink概念">
 <meta property="og:url" content="https://github.com/Zhenxuyang/zhenxuyang.github.io/2022/11/02/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Flink/Flink%E6%A6%82%E5%BF%B5/index.html">
 <meta property="og:site_name" content="坚持不下去的博客">
-<meta property="og:description" content="[TOC] Flink概念可查询式状态服务Flink算子的状态可供外部系统查询 应用的一次性保障端到端的一次性保障分为上游数据系统、Flink和下游数据系统三部分 上游数据系统支持数据重放  对于文件系统，检查点保存文件读取的位置 对于Kafka，检查点保存offset  Flink 数据源 对于文件系统，检查点保存文件读取的位置 对于Kafka，检查点保存offset 保存到状态后端   算子">
+<meta property="og:description" content="[TOC] Flink概念状态状态类型 KeyedState OperatorState Broadcast State  使用Operator State可查询式状态服务Flink算子的状态可供外部系统查询 应用的一次性保障端到端的一次性保障分为上游数据系统、Flink和下游数据系统三部分 上游数据系统支持数据重放  对于文件系统，检查点保存文件读取的位置 对于Kafka，检查点保存offset">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-11-02T09:49:12.000Z">
-<meta property="article:modified_time" content="2022-11-04T15:12:15.574Z">
+<meta property="article:modified_time" content="2022-11-05T02:38:15.827Z">
 <meta property="article:author" content="zxy">
 <meta property="article:tag" content="Flink">
 <meta name="twitter:card" content="summary">
@@ -105,7 +105,12 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>[TOC]</p>
-<h1 id="Flink概念"><a href="#Flink概念" class="headerlink" title="Flink概念"></a>Flink概念</h1><h2 id="可查询式状态服务"><a href="#可查询式状态服务" class="headerlink" title="可查询式状态服务"></a>可查询式状态服务</h2><p>Flink算子的状态可供外部系统查询</p>
+<h1 id="Flink概念"><a href="#Flink概念" class="headerlink" title="Flink概念"></a>Flink概念</h1><h2 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h2><h3 id="状态类型"><a href="#状态类型" class="headerlink" title="状态类型"></a>状态类型</h3><ol>
+<li>KeyedState</li>
+<li>OperatorState</li>
+<li>Broadcast State</li>
+</ol>
+<h3 id="使用Operator-State"><a href="#使用Operator-State" class="headerlink" title="使用Operator State"></a>使用Operator State</h3><h2 id="可查询式状态服务"><a href="#可查询式状态服务" class="headerlink" title="可查询式状态服务"></a>可查询式状态服务</h2><p>Flink算子的状态可供外部系统查询</p>
 <h2 id="应用的一次性保障"><a href="#应用的一次性保障" class="headerlink" title="应用的一次性保障"></a>应用的一次性保障</h2><p>端到端的一次性保障分为上游数据系统、Flink和下游数据系统三部分</p>
 <h3 id="上游数据系统"><a href="#上游数据系统" class="headerlink" title="上游数据系统"></a>上游数据系统</h3><p>支持数据重放</p>
 <ol>
@@ -131,6 +136,7 @@
 </ol>
 <h3 id="下游数据系统"><a href="#下游数据系统" class="headerlink" title="下游数据系统"></a>下游数据系统</h3><p>支持两阶段提交</p>
 <p><a target="_blank" rel="noopener" href="https://flink.apache.org/features/2018/03/01/end-to-end-exactly-once-apache-flink.html">Flink两阶段提交</a></p>
+<p><a target="_blank" rel="noopener" href="https://flink.apache.org/features/2018/03/01/end-to-end-exactly-once-apache-flink.html">https://flink.apache.org/features/2018/03/01/end-to-end-exactly-once-apache-flink.html</a></p>
 
       
     </div>
