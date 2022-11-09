@@ -75,6 +75,129 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java/Java调试" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/27/java/Java%E8%B0%83%E8%AF%95/" class="article-date">
+  <time class="dt-published" datetime="2022-09-27T11:27:08.000Z" itemprop="datePublished">2022-09-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/27/java/Java%E8%B0%83%E8%AF%95/">Java调试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Java调试"><a href="#Java调试" class="headerlink" title="Java调试"></a>Java调试</h1><h2 id="jps"><a href="#jps" class="headerlink" title="jps"></a>jps</h2><p>列出当前的java进程的pid</p>
+<h2 id="jstack"><a href="#jstack" class="headerlink" title="jstack"></a>jstack</h2><p>打印java进程的堆栈</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-q 仅输出VM标识符，不包括class name,jar name,arguments in main method</span><br><span class="line">-m 输出main method的参数</span><br><span class="line">-l 输出完全的包名，应用主类名，jar的完全路径名</span><br><span class="line">-v 输出jvm参数</span><br><span class="line">-V 输出通过flag文件传递到JVM中的参数(.hotspotrc文件或-XX:Flags=所指定的文件</span><br><span class="line">-Joption 传递参数到vm,例如:-J-Xms48m</span><br></pre></td></tr></table></figure>
+
+<h2 id="jmap和jhat"><a href="#jmap和jhat" class="headerlink" title="jmap和jhat"></a>jmap和jhat</h2><p>导出堆内存并分析</p>
+<h2 id="jstat"><a href="#jstat" class="headerlink" title="jstat"></a>jstat</h2><p>分析JVM指标</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zhenxuyang.github.io/2022/09/27/java/Java%E8%B0%83%E8%AF%95/" data-id="cla3ctsjv0007aluj1g9u3cwq" data-title="Java调试" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-大数据/设计方法/分布式系统" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/27/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" class="article-date">
+  <time class="dt-published" datetime="2022-09-27T11:05:01.000Z" itemprop="datePublished">2022-09-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/27/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/">分布式系统</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="分布式系统"><a href="#分布式系统" class="headerlink" title="分布式系统"></a>分布式系统</h1><h2 id="CAP"><a href="#CAP" class="headerlink" title="CAP"></a>CAP</h2><ol>
+<li>一致性<ol>
+<li>数据要一致(全部正确)</li>
+</ol>
+</li>
+<li>可用性<ol>
+<li>数据要一直能用(不能停)</li>
+</ol>
+</li>
+<li>分区容错性<ol>
+<li>组件出故障了还能用</li>
+</ol>
+</li>
+<li>CAP不能同时保证<ol>
+<li>CP<ol>
+<li>zookeeper<ol>
+<li>节点出故障了，就暂停服务</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>AP<ol>
+<li>Eureka<ol>
+<li>节点出故障了，允许读到不同数据</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="BASE"><a href="#BASE" class="headerlink" title="BASE"></a>BASE</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zhenxuyang.github.io/2022/09/27/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" data-id="cla3ctslr002laluj9gym02di" data-title="分布式系统" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-设计模式/工厂模式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/09/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" class="article-date">
@@ -590,208 +713,6 @@
 
 
   
-    <article id="post-大数据/组件/Kafka" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/09/21/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Kafka/" class="article-date">
-  <time class="dt-published" datetime="2022-09-21T05:01:00.000Z" itemprop="datePublished">2022-09-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/09/21/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Kafka/">Kafka</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[TOC]</p>
-<h1 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h3 id="消费者和消费组"><a href="#消费者和消费组" class="headerlink" title="消费者和消费组"></a>消费者和消费组</h3><h2 id="ISR、OSR和AR"><a href="#ISR、OSR和AR" class="headerlink" title="ISR、OSR和AR"></a>ISR、OSR和AR</h2><h2 id="LEO、HW"><a href="#LEO、HW" class="headerlink" title="LEO、HW"></a>LEO、HW</h2><h2 id="消息格式"><a href="#消息格式" class="headerlink" title="消息格式"></a>消息格式</h2><ol>
-<li>offset<ol>
-<li>消息在partition中的位置，8byte的有序id号</li>
-</ol>
-</li>
-<li>消息大小<ol>
-<li>表示消息的大小，4byte</li>
-</ol>
-</li>
-<li>消息体<ol>
-<li>根据具体的消息占据的空间不一样</li>
-</ol>
-</li>
-</ol>
-<h2 id="存储策略"><a href="#存储策略" class="headerlink" title="存储策略"></a>存储策略</h2><ol>
-<li>时间过期</li>
-<li>消息数量</li>
-</ol>
-<h2 id="消息存储"><a href="#消息存储" class="headerlink" title="消息存储"></a>消息存储</h2><ol>
-<li>topic<ol>
-<li>partition<ol>
-<li>segment<ol>
-<li>.log<ol>
-<li>存储message</li>
-</ol>
-</li>
-<li>.index<ol>
-<li>索引文件</li>
-</ol>
-</li>
-<li>.timeindex<ol>
-<li>索引文件</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<h2 id="查找一个消息的具体流程"><a href="#查找一个消息的具体流程" class="headerlink" title="查找一个消息的具体流程"></a>查找一个消息的具体流程</h2><ol>
-<li>根据分区找到partition目录</li>
-<li>根据offset找到segment文件</li>
-<li>根据index二分查找找到查找log的offset</li>
-<li>根据log的offset顺序扫描找到消息</li>
-</ol>
-<h2 id="如何保证消息有序"><a href="#如何保证消息有序" class="headerlink" title="如何保证消息有序"></a>如何保证消息有序</h2><p>Kafka的Partition中的消息都是有序的</p>
-<ol>
-<li>一个topic队列中只有一个partition</li>
-<li>根据key指定不同的partition<ol>
-<li>属于同一个操作对象的消息是有序的</li>
-</ol>
-</li>
-</ol>
-<h2 id="如何保证消息不丢失"><a href="#如何保证消息不丢失" class="headerlink" title="如何保证消息不丢失"></a>如何保证消息不丢失</h2><ol>
-<li>生产者消息丢失的情况<ol>
-<li>重新发送</li>
-</ol>
-</li>
-<li>消费者消息丢失的情况</li>
-</ol>
-<h2 id="消息的三种语义"><a href="#消息的三种语义" class="headerlink" title="消息的三种语义"></a>消息的三种语义</h2><ol>
-<li>最多一次<ol>
-<li>消息发送一次，存在消息丢失的情况</li>
-</ol>
-</li>
-<li>最少一次<ol>
-<li>消息可能发送多次，存在多次消费的情况</li>
-<li>生产者发送ack时broker出现故障</li>
-</ol>
-</li>
-<li>精确一次<ol>
-<li>严格地消费一条消息</li>
-<li>实现方法<ol>
-<li>生产者开启幂等，对每条消息生成1个id，只能保证一个partition中幂等而且不支持跨会话的幂等</li>
-<li>生产者开启事务</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<h2 id="出现消息堆积的解决方法"><a href="#出现消息堆积的解决方法" class="headerlink" title="出现消息堆积的解决方法"></a>出现消息堆积的解决方法</h2><h3 id="排查问题"><a href="#排查问题" class="headerlink" title="排查问题"></a>排查问题</h3><p>检查Kafka、消费者和目标数据库的CPU、内存和网络状况</p>
-<h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><ol>
-<li>资源不足就增加资源</li>
-<li>如果出现某个分区堆积就优化分区</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://zhenxuyang.github.io/2022/09/21/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Kafka/" data-id="cla3ctsl8001ualuj2w1f4p36" data-title="Kafka" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kafka/" rel="tag">Kafka</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" rel="tag">消息队列</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-大数据/设计方法/数仓建模" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/09/20/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%95%B0%E4%BB%93%E5%BB%BA%E6%A8%A1/" class="article-date">
-  <time class="dt-published" datetime="2022-09-20T08:27:00.000Z" itemprop="datePublished">2022-09-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/09/20/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%95%B0%E4%BB%93%E5%BB%BA%E6%A8%A1/">数仓建模</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="数仓建模"><a href="#数仓建模" class="headerlink" title="数仓建模"></a>数仓建模</h1><h2 id="建模类型"><a href="#建模类型" class="headerlink" title="建模类型"></a>建模类型</h2><ol>
-<li>关系建模</li>
-<li>维度建模</li>
-</ol>
-<h2 id="维度建模的类型"><a href="#维度建模的类型" class="headerlink" title="维度建模的类型"></a>维度建模的类型</h2><ol>
-<li>星形模型<ol>
-<li>以事实表为中心</li>
-<li>维度表的主键是事实表的外键</li>
-<li>数据冗余多</li>
-<li>便于连接</li>
-</ol>
-</li>
-<li>雪花模型<ol>
-<li>维度表关联其他的维度表</li>
-<li>更接近OLTP的建模方法</li>
-<li>维度层次清晰</li>
-<li>数据冗余少</li>
-<li>连接时更麻烦</li>
-</ol>
-</li>
-<li>星系模型<ol>
-<li>多张事实表共享维度表</li>
-<li>实际中用的最多的</li>
-</ol>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://zhenxuyang.github.io/2022/09/20/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95/%E6%95%B0%E4%BB%93%E5%BB%BA%E6%A8%A1/" data-id="cla3ctslx002raluj0zm9c2xh" data-title="数仓建模" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E4%BB%93%E8%AE%BE%E8%AE%A1/" rel="tag">数仓设计</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -849,6 +770,14 @@
       <ul>
         
           <li>
+            <a href="/2022/11/10/java/Java%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/">Java开发规范</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/07/java/JMM/">JMM</a>
+          </li>
+        
+          <li>
             <a href="/2022/11/04/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Redis/Redis%E6%A6%82%E5%BF%B5/">Redis概念</a>
           </li>
         
@@ -858,14 +787,6 @@
         
           <li>
             <a href="/2022/11/02/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/ClickHouse/ClickHouse%E6%A6%82%E5%BF%B5/">ClickHouse概念</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/02/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Flink/Flink%E6%A6%82%E5%BF%B5/">Flink概念</a>
-          </li>
-        
-          <li>
-            <a href="/2022/10/31/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Flink/Flink%20API/">Flink API</a>
           </li>
         
       </ul>
