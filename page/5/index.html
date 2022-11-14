@@ -75,6 +75,179 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java/Java并发" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/08/java/Java%E5%B9%B6%E5%8F%91/" class="article-date">
+  <time class="dt-published" datetime="2022-09-08T02:36:08.000Z" itemprop="datePublished">2022-09-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/08/java/Java%E5%B9%B6%E5%8F%91/">Java并发</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Java并发"><a href="#Java并发" class="headerlink" title="Java并发"></a>Java并发</h1><h2 id="volatile关键字"><a href="#volatile关键字" class="headerlink" title="volatile关键字"></a>volatile关键字</h2><ol>
+<li>保证变量的可见性，强制读内存而不是缓存</li>
+<li>禁止编译优化导致的指令重排</li>
+<li>不能保证完全原子性</li>
+</ol>
+<h3 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h3><p>Lock前缀指令</p>
+<h2 id="synchronized关键字"><a href="#synchronized关键字" class="headerlink" title="synchronized关键字"></a>synchronized关键字</h2><h3 id="实现的原理"><a href="#实现的原理" class="headerlink" title="实现的原理"></a>实现的原理</h3><ol>
+<li><p>修饰语句块<br>monitorenter、monitorexit指令</p>
+</li>
+<li><p>修饰方法<br>ACC_SYNCHRONIZED标志</p>
+</li>
+</ol>
+<h2 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h2><p>每个线程有自己的变量</p>
+<h3 id="实现原理-1"><a href="#实现原理-1" class="headerlink" title="实现原理"></a>实现原理</h3><p>ThreadLocalMap</p>
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><h3 id="Runnable和Callable的区别"><a href="#Runnable和Callable的区别" class="headerlink" title="Runnable和Callable的区别"></a>Runnable和Callable的区别</h3><p>Runnable 不返回结果和抛出异常</p>
+<p>Callable 返回结果和抛出异常</p>
+<h3 id="创建线程池的方法"><a href="#创建线程池的方法" class="headerlink" title="创建线程池的方法"></a>创建线程池的方法</h3><ol>
+<li><p>Executors创建</p>
+</li>
+<li><p>ThreadPoolExcutor</p>
+</li>
+</ol>
+<h3 id="ThreadPoolExcutor的参数"><a href="#ThreadPoolExcutor的参数" class="headerlink" title="ThreadPoolExcutor的参数"></a>ThreadPoolExcutor的参数</h3><table>
+<thead>
+<tr>
+<th align="left">params</th>
+<th align="left">desc</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">corePoolSize</td>
+<td align="left">最小的同时运行的线程数量</td>
+</tr>
+<tr>
+<td align="left">maximumPoolSize</td>
+<td align="left">队列中的存放的任务达到最大后最大的同时运行的线程数量</td>
+</tr>
+<tr>
+<td align="left">workQueue</td>
+<td align="left">任务队列</td>
+</tr>
+<tr>
+<td align="left">keepAliveTime</td>
+<td align="left">没有新任务的情况下，核心线程外的运行线程销毁前的等待时间</td>
+</tr>
+<tr>
+<td align="left">unit</td>
+<td align="left">keepAliveTime的时间单位</td>
+</tr>
+<tr>
+<td align="left">threadFactory</td>
+<td align="left">executor创建线程时会用到的工厂</td>
+</tr>
+<tr>
+<td align="left">handler</td>
+<td align="left">任务饱和情况下的策略</td>
+</tr>
+</tbody></table>
+<h3 id="其他种类的线程池"><a href="#其他种类的线程池" class="headerlink" title="其他种类的线程池"></a>其他种类的线程池</h3><ol>
+<li>FixedThreadPool</li>
+<li>SingleThreadPool</li>
+<li>CachedThreadPool</li>
+</ol>
+<h3 id="线程池大小"><a href="#线程池大小" class="headerlink" title="线程池大小"></a>线程池大小</h3><p>计算密集型： N+1<br>IO密集型： 2*N</p>
+<h2 id="Atomic原子类"><a href="#Atomic原子类" class="headerlink" title="Atomic原子类"></a>Atomic原子类</h2><p>原子类的操作具有原子性</p>
+<h3 id="原子类的类型"><a href="#原子类的类型" class="headerlink" title="原子类的类型"></a>原子类的类型</h3><ol>
+<li><p>基本类型</p>
+</li>
+<li><p>数组类型</p>
+</li>
+<li><p>引用类型</p>
+</li>
+<li><p>对象的属性修改类型</p>
+</li>
+</ol>
+<p>原子类的实现原理是CAS</p>
+<h2 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h2><p>Compare And Swap</p>
+<h3 id="VEN"><a href="#VEN" class="headerlink" title="VEN"></a>VEN</h3><p>V: 要操作的变量<br>E: 期待的变量，就是旧值<br>N: 要写入的新值</p>
+<h3 id="Java的CAS实现"><a href="#Java的CAS实现" class="headerlink" title="Java的CAS实现"></a>Java的CAS实现</h3><p>CAS是原子操作，具体的实现通过<code>Unsafe</code>中的接口调用<code>native</code>方法，具体的实现和操作系统、CPU有关</p>
+<h3 id="存在的三大问题"><a href="#存在的三大问题" class="headerlink" title="存在的三大问题"></a>存在的三大问题</h3><ol>
+<li><p>ABA问题</p>
+</li>
+<li><p>循环时间长开销大</p>
+</li>
+<li><p>AtomicInteger只能保证一个共享变量的操作</p>
+</li>
+</ol>
+<h2 id="AQS"><a href="#AQS" class="headerlink" title="AQS"></a>AQS</h2><p>设置一个CLH队列管理获取不到锁的线程</p>
+<ol>
+<li>通过CAS对同步状态进行原子操作修改值</li>
+<li>共享方式<ol>
+<li>独占：只有1个线程能执行<ol>
+<li>ReentrantLock<ol>
+<li>可以实现公平锁和非公平锁</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>共享：可以允许多个线程执行<ol>
+<li>Semaphore<ol>
+<li><code>acquire</code>和<code>release</code>进行锁的获取和释放</li>
+<li>有非公平和公平模式</li>
+</ol>
+</li>
+<li>CountDownLatch(倒计时器)<ol>
+<li>允许count个线程阻塞在一个地方，直到所有的线程都执行完毕</li>
+<li>典型用法<ol>
+<li>某一个线程在开始运行前等待n个线程执行完毕<ol>
+<li>设置计数器为n</li>
+<li>某个线程执行<code>wait</code></li>
+<li>n个线程执行<code>countDown</code>方法</li>
+</ol>
+</li>
+<li>实现多个线程开始执行任务的最大并行性<ol>
+<li>设置计数器为1</li>
+<li>多个线程执行<code>wait</code></li>
+<li>主线程执行<code>countDown</code></li>
+<li>多个线程并发</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zhenxuyang.github.io/2022/09/08/java/Java%E5%B9%B6%E5%8F%91/" data-id="clagjt8x60007pvuj9pwigvcq" data-title="Java并发" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag">并发</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-leetcode/1592. 重新排列单词间的空格" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/09/07/leetcode/1592.%20%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E5%8D%95%E8%AF%8D%E9%97%B4%E7%9A%84%E7%A9%BA%E6%A0%BC/" class="article-date">
@@ -107,7 +280,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zhenxuyang.github.io/2022/09/07/leetcode/1592.%20%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E5%8D%95%E8%AF%8D%E9%97%B4%E7%9A%84%E7%A9%BA%E6%A0%BC/" data-id="cla3ctskd000kalujguq98orj" data-title="1592. 重新排列单词间的空格" class="article-share-link">Share</a>
+      <a data-url="https://zhenxuyang.github.io/2022/09/07/leetcode/1592.%20%E9%87%8D%E6%96%B0%E6%8E%92%E5%88%97%E5%8D%95%E8%AF%8D%E9%97%B4%E7%9A%84%E7%A9%BA%E6%A0%BC/" data-id="clagjt8xo000qpvuj7lydekx9" data-title="1592. 重新排列单词间的空格" class="article-share-link">Share</a>
       
       
       
@@ -152,7 +325,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zhenxuyang.github.io/2022/09/07/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/XGboost%E5%92%8CLightGBM/" data-id="cla3ctsko0011alujfq11d0hf" data-title="XGBoost和LightGBM" class="article-share-link">Share</a>
+      <a data-url="https://zhenxuyang.github.io/2022/09/07/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/XGboost%E5%92%8CLightGBM/" data-id="clagjt8xz0018pvuj3zqb15ae" data-title="XGBoost和LightGBM" class="article-share-link">Share</a>
       
       
       
@@ -200,7 +373,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zhenxuyang.github.io/2022/09/06/leetcode/828-%E7%BB%9F%E8%AE%A1%E5%AD%90%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%94%AF%E4%B8%80%E5%AD%97%E7%AC%A6/" data-id="cla3ctski000qalujdbw8dk5f" data-title="828. 统计子串中的唯一字符" class="article-share-link">Share</a>
+      <a data-url="https://zhenxuyang.github.io/2022/09/06/leetcode/828-%E7%BB%9F%E8%AE%A1%E5%AD%90%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%94%AF%E4%B8%80%E5%AD%97%E7%AC%A6/" data-id="clagjt8xr000xpvuj5aei3nts" data-title="828. 统计子串中的唯一字符" class="article-share-link">Share</a>
       
       
       
@@ -295,7 +468,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zhenxuyang.github.io/2022/09/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Spark%20SQL/" data-id="cla3ctslf0025aluj8xoqhyjm" data-title="Spark SQL" class="article-share-link">Share</a>
+      <a data-url="https://zhenxuyang.github.io/2022/09/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Spark%20SQL/" data-id="clagjt8yp002dpvuj0ldx5dm7" data-title="Spark SQL" class="article-share-link">Share</a>
       
       
       
@@ -591,7 +764,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zhenxuyang.github.io/2022/09/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Spark/" data-id="cla3ctslj0029aluj3k0p1oao" data-title="Spark" class="article-share-link">Share</a>
+      <a data-url="https://zhenxuyang.github.io/2022/09/05/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Spark/" data-id="clagjt8ys002ipvujfqr82rwf" data-title="Spark" class="article-share-link">Share</a>
       
       
       
@@ -831,7 +1004,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zhenxuyang.github.io/2022/09/03/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/HDFS/" data-id="cla3ctsl0001naluj9hc719nd" data-title="HDFS" class="article-share-link">Share</a>
+      <a data-url="https://zhenxuyang.github.io/2022/09/03/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/HDFS/" data-id="clagjt8yb001vpvuja98dcptw" data-title="HDFS" class="article-share-link">Share</a>
       
       
       
@@ -947,7 +1120,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zhenxuyang.github.io/2022/09/01/leetcode/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" data-id="cla3ctskk000ualuj5hceg3c5" data-title="Leetcode" class="article-share-link">Share</a>
+      <a data-url="https://zhenxuyang.github.io/2022/09/01/leetcode/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" data-id="clagjt8xt0012pvujh5x411wt" data-title="Leetcode" class="article-share-link">Share</a>
       
       
       
@@ -997,7 +1170,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zhenxuyang.github.io/2022/09/01/python/Python%E4%B8%BA%E4%BB%80%E4%B9%88%E6%B2%A1%E6%9C%89%E9%87%8D%E8%BD%BD%EF%BC%9F/" data-id="cla3ctskm000waluj9l9aet6c" data-title="Python为什么没有重载？" class="article-share-link">Share</a>
+      <a data-url="https://zhenxuyang.github.io/2022/09/01/python/Python%E4%B8%BA%E4%BB%80%E4%B9%88%E6%B2%A1%E6%9C%89%E9%87%8D%E8%BD%BD%EF%BC%9F/" data-id="clagjt8xx0014pvujeesg907q" data-title="Python为什么没有重载？" class="article-share-link">Share</a>
       
       
       
@@ -1038,7 +1211,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zhenxuyang.github.io/2022/09/01/%E4%BB%8A%E6%97%A5%E4%BA%8B%EF%BC%8C%E4%BB%8A%E6%97%A5%E6%AF%95/" data-id="cla3ctsji0001aluj3zykadya" data-title="今日事，今日毕" class="article-share-link">Share</a>
+      <a data-url="https://zhenxuyang.github.io/2022/09/01/%E4%BB%8A%E6%97%A5%E4%BA%8B%EF%BC%8C%E4%BB%8A%E6%97%A5%E6%AF%95/" data-id="clagjt8wr0001pvuj41v91ypa" data-title="今日事，今日毕" class="article-share-link">Share</a>
       
       
       
@@ -1052,62 +1225,11 @@
 
 
   
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/09/01/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2022-09-01T03:32:06.087Z" itemprop="datePublished">2022-09-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/09/01/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://zhenxuyang.github.io/2022/09/01/hello-world/" data-id="cla3ctsja0000aluj0ta1fa57" data-title="Hello World" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -1138,7 +1260,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Airflow%E5%AE%89%E8%A3%85/" style="font-size: 10px;">Airflow安装</a> <a href="/tags/ClickHouse/" style="font-size: 12.5px;">ClickHouse</a> <a href="/tags/Flink/" style="font-size: 15px;">Flink</a> <a href="/tags/Flume/" style="font-size: 10px;">Flume</a> <a href="/tags/HBase/" style="font-size: 10px;">HBase</a> <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/Hive/" style="font-size: 10px;">Hive</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Kafka/" style="font-size: 10px;">Kafka</a> <a href="/tags/Leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" style="font-size: 17.5px;">Leetcode每日一题</a> <a href="/tags/LightGBM/" style="font-size: 10px;">LightGBM</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Spark/" style="font-size: 15px;">Spark</a> <a href="/tags/XGBoost/" style="font-size: 10px;">XGBoost</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">分布式系统</a> <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 12.5px;">大数据</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 12.5px;">字符串</a> <a href="/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 12.5px;">并发</a> <a href="/tags/%E6%95%B0%E4%BB%93%E8%AE%BE%E8%AE%A1/" style="font-size: 20px;">数仓设计</a> <a href="/tags/%E6%95%B0%E5%AD%97%E6%8E%92%E5%88%97/" style="font-size: 10px;">数字排列</a> <a href="/tags/%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">概念</a> <a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" style="font-size: 10px;">消息队列</a> <a href="/tags/%E8%BF%90%E7%BB%B4%E5%92%8C%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">运维和部署</a> <a href="/tags/%E9%9A%8F%E6%83%B3/" style="font-size: 12.5px;">随想</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a> <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">项目</a>
+      <a href="/tags/Airflow%E5%AE%89%E8%A3%85/" style="font-size: 10px;">Airflow安装</a> <a href="/tags/ClickHouse/" style="font-size: 12.5px;">ClickHouse</a> <a href="/tags/Flink/" style="font-size: 17.5px;">Flink</a> <a href="/tags/Flume/" style="font-size: 10px;">Flume</a> <a href="/tags/HBase/" style="font-size: 10px;">HBase</a> <a href="/tags/Hadoop/" style="font-size: 10px;">Hadoop</a> <a href="/tags/Hive/" style="font-size: 10px;">Hive</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/Kafka/" style="font-size: 10px;">Kafka</a> <a href="/tags/Leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" style="font-size: 17.5px;">Leetcode每日一题</a> <a href="/tags/LightGBM/" style="font-size: 10px;">LightGBM</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/Spark/" style="font-size: 15px;">Spark</a> <a href="/tags/XGBoost/" style="font-size: 10px;">XGBoost</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">分布式系统</a> <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 12.5px;">大数据</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 12.5px;">字符串</a> <a href="/tags/%E5%B9%B6%E5%8F%91/" style="font-size: 12.5px;">并发</a> <a href="/tags/%E6%95%B0%E4%BB%93%E8%AE%BE%E8%AE%A1/" style="font-size: 20px;">数仓设计</a> <a href="/tags/%E6%95%B0%E5%AD%97%E6%8E%92%E5%88%97/" style="font-size: 10px;">数字排列</a> <a href="/tags/%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">概念</a> <a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" style="font-size: 10px;">消息队列</a> <a href="/tags/%E8%BF%90%E7%BB%B4%E5%92%8C%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">运维和部署</a> <a href="/tags/%E9%9A%8F%E6%83%B3/" style="font-size: 12.5px;">随想</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a> <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 10px;">项目</a>
     </div>
   </div>
 
@@ -1160,6 +1282,10 @@
       <ul>
         
           <li>
+            <a href="/2022/11/14/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/Flink/Flink%20ML/">Flink ML</a>
+          </li>
+        
+          <li>
             <a href="/2022/11/10/java/Java%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/">Java开发规范</a>
           </li>
         
@@ -1173,10 +1299,6 @@
         
           <li>
             <a href="/2022/11/03/%E9%98%85%E8%AF%BB%E6%9D%90%E6%96%99/%E7%BE%8E%E5%9B%A2%E6%95%B0%E6%8D%AE%E5%AE%9E%E8%B7%B5/">美团数据实践</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/02/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%84%E4%BB%B6/ClickHouse/ClickHouse%E6%A6%82%E5%BF%B5/">ClickHouse概念</a>
           </li>
         
       </ul>
